@@ -11,6 +11,6 @@ inputs:
 runs: |
   bash test.sh
 
-branding:g
+branding:
   icon: "mic"
   color: "purple"
