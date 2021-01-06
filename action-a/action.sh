@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ..
+ls
 
 chmod +x test.sh
 sh test.sh
