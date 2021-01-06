@@ -10,9 +10,9 @@ inputs:
 
 runs:
   using: "composite"
-    steps: 
-      - run: test.sh
-        shell: bash
+  steps:
+    - run: test.sh
+      shell: bash
 
 branding:
   icon: "mic"
