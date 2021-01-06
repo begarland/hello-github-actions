@@ -1,3 +1,3 @@
-#!/bin/bash -l
+#!/bin/bash
 
-sh -c "echo I'm done!"
+sh -c "echo Im done!"
