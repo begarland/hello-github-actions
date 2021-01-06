@@ -11,7 +11,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: test.sh
+    - run: ${{ github.action_path }}/test.sh
       shell: bash
 
 branding:
