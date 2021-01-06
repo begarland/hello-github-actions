@@ -9,5 +9,3 @@ jobs:
       - name: Test bash script
         run: |
           bash test.sh
-        with:
-          ENV: QA
