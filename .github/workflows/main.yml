@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Test bash script
-      - with:
+      with:
           ENV: "test"
       - run: |
         bash test.sh
