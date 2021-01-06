@@ -8,7 +8,9 @@ inputs:
     required: true
     default: "World"
 
-runs: "bash test.sh"
+runs:
+  using: "bash"
+  main: "test.sh"
 
 branding:
   icon: "mic"
