@@ -8,6 +8,8 @@ inputs:
     required: true
     default: "World"
 
+runs: bash test.sh
+
 branding:
   icon: "mic"
   color: "purple"
