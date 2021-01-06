@@ -1,6 +1,8 @@
 #!/bin/bash
 
 cd ..
+
+chmod +x test.sh
 sh test.sh
 
 
