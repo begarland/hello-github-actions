@@ -9,3 +9,10 @@ jobs:
       - name: Test bash script
         run: |
           bash test.sh
+      - uses: ./action-a
+        with:
+          MY_NAME: Brandy
+
+          # ENV: QA
+          # CI: true
+          # RAILS_ENV: test
