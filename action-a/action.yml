@@ -11,8 +11,9 @@ inputs:
 runs:
   using: "composite"
     steps: 
-      - run: $GITHUB_ACTION_PATH/test.sh
+      - run: ${{ github.action_path }}/test/script.sh
         shell: bash
+
 
 branding:
   icon: "mic"
