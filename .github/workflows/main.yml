@@ -11,4 +11,3 @@ jobs:
           ENV: "test"
       - run: |
         bash test.sh
-      
