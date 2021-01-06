@@ -9,7 +9,7 @@ inputs:
     default: "World"
 
 runs: |
-  bash test.sh
+  "bash test.sh"
 
 branding:
   icon: "mic"
