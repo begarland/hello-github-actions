@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Test bash script
       with:
           ENV: "test"
+      - name: Test bash script
       - run: |
         bash test.sh
