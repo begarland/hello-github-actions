@@ -1,7 +1,12 @@
 #!/bin/bash
 
+pwd
 
-cd hello-github-actions
+cd ..
+cd ..
+
+pwd
+
 
 chmod +x test.sh
 sh -c test.sh
