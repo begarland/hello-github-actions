@@ -14,7 +14,6 @@ runs:
       - run: ${{ github.action_path }}/test.sh
         shell: bash
 
-
 branding:
   icon: "mic"
   color: "purple"
