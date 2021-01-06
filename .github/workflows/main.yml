@@ -7,7 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Test bash script
-      with: 
-        ENV: QA
       run: |
         bash test.sh
