@@ -15,7 +15,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "WATIRDockerfile"
   args:
     - ${{ inputs.ENV }}
     - ${{ inputs.RAILS_ENV }}
