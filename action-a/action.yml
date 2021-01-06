@@ -15,6 +15,7 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/action.sh
       shell: bash
+      working-directory: hello-github-actions
 
 branding:
   icon: "mic"

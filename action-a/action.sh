@@ -1,7 +1,5 @@
 #!/bin/bash
 
-pwd
-
 chmod +x test.sh
 sh -c test.sh
 
