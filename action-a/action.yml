@@ -15,6 +15,8 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/action.sh
       shell: bash
+      with:
+        ENV: QA
 
 branding:
   icon: "mic"
