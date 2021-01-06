@@ -3,7 +3,6 @@
 pwd
 
 cd ..
-cd ..
 
 pwd
 
