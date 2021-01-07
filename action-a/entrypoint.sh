@@ -2,10 +2,11 @@
 
 sh -c "echo Hello world my name is $INPUT_ENV, $INPUT_RAILS_ENV, $INPUT_CI"
 
-cd $GITHUB_WORKSPACE
+sh -c "echo wkspce is $GITHUB_WORKSPACE"
 
-chmod +x test.sh	
-sh -c test.sh	
+
+chmod +x $GITHUB_WORKSPACE/test.sh	
+sh -c $GITHUB_WORKSPACE/test.sh	
 
 
 sh -c "echo Im done!"
