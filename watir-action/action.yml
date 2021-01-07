@@ -1,0 +1,25 @@
+name: "WATIR actions"
+description: "Runs the WATIR actions"
+
+inputs:
+  ENV:
+    description: "Environment variable"
+    default: "QA"
+  RAILS_ENV:
+    description: "rails env"
+    default: "test"
+  CI:
+    description: "CI"
+    default: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.ENV }}
+    - ${{ inputs.RAILS_ENV }}
+    - ${{ inputs.CI }}
+
+branding:
+  icon: "mic"
+  color: "purple"
