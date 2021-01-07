@@ -1,6 +1,5 @@
-name: "Hello Actions"
-description: "Greet someone"
-author: "octocat@github.com"
+name: "WATIR actions"
+description: "Runs the WATIR actions"
 
 inputs:
   ENV:
