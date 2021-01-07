@@ -1,9 +1,11 @@
 name: A workflow for my Hello World file
-on: push
+on:
+  schedule:
+    - cron: "0 6 * * *"
 jobs:
   build:
-    name: Hello world action
+    name: Runs WATIR Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: ./action-a
+      - uses: ./watir-action
