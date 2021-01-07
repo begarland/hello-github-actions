@@ -1,7 +1,9 @@
 name: A workflow for WATIR tests
-on:
-  schedule:
-    - cron: "0 6 * * *"
+# on:
+#   schedule:
+#     - cron: "0 6 * * *"
+
+on: push
 jobs:
   build:
     name: Runs WATIR Test
@@ -9,3 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: ./watir-action
+        with:
+          ENV: "Qa"
+      - uses: ./watir-action
+        with:
+          ENV: "Staging"
+      - uses: ./watir-action
+        with:
+          ENV: "Prod"
