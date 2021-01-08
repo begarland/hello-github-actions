@@ -4,7 +4,7 @@ on:
     - cron: "35 19 * * *"
 jobs:
   build:
-    name: Runs WATIR Test
+    name: Runs a Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
