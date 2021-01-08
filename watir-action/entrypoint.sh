@@ -6,7 +6,7 @@ pwd
 
 cd $GITHUB_WORKSPACE/testDir/anotherDir
 
-bundle install --deployement
+bundle exec install --deployement
 
 pwd
 

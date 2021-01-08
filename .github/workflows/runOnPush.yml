@@ -5,6 +5,13 @@ jobs:
     name: Runs a Test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Bundle install
+        run: |
+          gem install bundler
+          bundle config https://gems.weblinc.com
       - uses: actions/checkout@v1
       - uses: ./watir-action
         with:
