@@ -1,4 +1,6 @@
 #!/bin/sh -l
 
-chmod +x $GITHUB_WORKSPACE/test.sh	
-sh -c $GITHUB_WORKSPACE/test.sh	
+cd $GITHUB_WORKSPACE/testDir/anotherDir
+
+chmod +x test.sh	
+sh -c test.sh	
