@@ -1,7 +1,7 @@
 name: A workflow that should run soon
 on:
   schedule:
-    - cron: "40 19 * * *"
+    - cron: "0 20 * * *"
 jobs:
   build:
     name: Runs a Test
@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          ref: "test-checkout-branch"
+          ref: "test-branch-checkout"
       - uses: ./watir-action
         with:
           ENV: "Qa"
