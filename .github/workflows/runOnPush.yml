@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          ref: "test-checkout-branch"
+          ref: "test-branch-checkout"
       - uses: ./watir-action
         with:
           ENV: "Qa"
