@@ -9,7 +9,7 @@ jobs:
   label:
     name: Runs WATIR Test
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.pull_request.labels.*.names, 'build')}}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'build')}}
     steps:
       - uses: actions/checkout@v1
       - name: test label
