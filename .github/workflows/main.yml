@@ -1,7 +1,7 @@
 name: A workflow for WATIR tests
 on:
   schedule:
-    - cron: "0 19 * * *"
+    - cron: "15 19 * * *"
 jobs:
   build:
     name: Runs WATIR Test
