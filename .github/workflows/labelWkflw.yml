@@ -7,7 +7,7 @@ on:
 
 jobs:
   label:
-    name: Runs WATIR Test
+    name: Runs if build label is provided
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.pull_request.labels.*.name, 'build')}}
     steps:
