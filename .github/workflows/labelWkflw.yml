@@ -1,0 +1,17 @@
+name: label
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  label:
+    name: Runs WATIR Test
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.pull_request.labels.*.names, 'build')}}
+    steps:
+      - uses: actions/checkout@v1
+      - name: test label
+        run: |
+          echo "${{ toJson(github.event.pull_request.labels.*.name)}}"
+          echo "this would build the thing"
