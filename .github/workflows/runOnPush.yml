@@ -17,6 +17,9 @@ jobs:
       - uses: ./watir-action
         with:
           ENV: "Staging"
+      - uses: actions/checkout@v1
+        with:
+          ref: "labeled-action"
       - uses: ./watir-action
         with:
           ENV: "Prod"
