@@ -13,6 +13,7 @@ jobs:
       - uses: ./watir-action
         with:
           ENV: "Qa"
+      - uses: actions/checkout@v1
       - uses: ./watir-action
         with:
           ENV: "Staging"
