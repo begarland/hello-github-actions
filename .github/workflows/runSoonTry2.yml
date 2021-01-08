@@ -1,5 +1,7 @@
 name: A workflow that should run soon
-on: push
+on:
+  schedule:
+    - cron: "0 20 * * *"
 jobs:
   build:
     name: Runs a Test
