@@ -1,13 +1,15 @@
 name: A workflow for WATIR tests
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 19 * * *"
 jobs:
   build:
     name: Runs WATIR Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+        with:
+          ref: "test-branch-checkout"
       - uses: ./watir-action
         with:
           ENV: "Qa"
