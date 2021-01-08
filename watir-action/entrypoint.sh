@@ -8,8 +8,8 @@ cd $GITHUB_WORKSPACE/testDir/anotherDir
 
 pwd
 
-chmod +x test.sh	
-sh -c test.sh	
+chmod +x $GITHUB_WORKSPACE/testDir/anotherDir/test.sh	
+sh -c $GITHUB_WORKSPACE/testDir/anotherDir/test.sh	
 
 
 echo "done!"
