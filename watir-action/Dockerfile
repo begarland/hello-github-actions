@@ -1,12 +1,12 @@
-FROM debian:9.5-slim
+FROM alpine:latest
 
-RUN apt-get add --update --no-cache build-base libffi-dev ruby-dev ruby-rdoc zlib-dev chromium-chromedriver ruby-webrick
+RUN apk add --update --no-cache build-base libffi-dev ruby-dev ruby-rdoc zlib-dev chromium-chromedriver ruby-webrick
 
 # Installs latest stable Chromium package.
-RUN apt-get update && apt-get upgrade \
+RUN apk update && apk upgrade \
     && echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories \
     && echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/main >> /etc/apk/repositories \
-    && apt-get add --no-cache \
+    && apk add --no-cache \
     chromium@latest-stable \
     nss@latest-stable \
     && rm -rf /var/lib/apt/lists/* \
