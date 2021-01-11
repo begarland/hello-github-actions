@@ -1,11 +1,12 @@
 #!/bin/bash
 
+pwd
 
 sh -c "echo Hello world, Im in another dir!" 
 
-cd ~/testDir/anotherDir
+cd ~
 
-bundle exec cucumber --publish
+bundle exec cucumber
 
 pwd
 
