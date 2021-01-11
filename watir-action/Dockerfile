@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM debian:9.5-slim
 FROM ruby:2.6.6
 
 RUN apk update && apk upgrade \
