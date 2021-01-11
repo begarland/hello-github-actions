@@ -8,7 +8,7 @@ RUN gem install bundler
 
 RUN bundle config https://gems.weblinc.com
 # RUN echo cd $GITHUB_WORKSPACE/testDir/anotherDir
-RUN BUNDLE_GEMFILE=$GITHUB_WORKSPACE/testDir/anotherDir/Gemfile bundle install --deployment
+RUN BUNDLE_GEMFILE=$GITHUB_WORKSPACE/testDir/anotherDir/Gemfile bundle install
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
