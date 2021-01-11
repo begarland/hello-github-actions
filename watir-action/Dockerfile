@@ -1,5 +1,5 @@
 FROM alpine:latest
-FROM ruby:2.6.6
+# FROM ruby:2.6.6
 
 RUN apk add --update --no-cache build-base libffi-dev ruby-dev ruby-rdoc zlib-dev chromium-chromedriver ruby-webrick
 
