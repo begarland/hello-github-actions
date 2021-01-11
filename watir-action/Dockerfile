@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-RUN sudo apt-get install chromium-chromedriver 
+RUN apt-get install chromium-chromedriver 
 
 FROM ruby:2.6.6
 
