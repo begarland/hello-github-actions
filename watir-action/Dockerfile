@@ -6,7 +6,7 @@ FROM ruby:2.6.6
 
 RUN gem install bundler
 
-RUN cd $GITHUB_WORKSPACE/testDir/anotherDir
+RUN echo cd $GITHUB_WORKSPACE/testDir/anotherDir
 RUN pwd
 RUN ls
 ADD Gemfile Gemfile 
