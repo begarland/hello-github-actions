@@ -10,9 +10,6 @@ pwd
 
 gem install bundler
 
-apt-get install chromium-chromedriver
-
-
 bundle config https://gems.weblinc.com
 bundle install --deployment
 
