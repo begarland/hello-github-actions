@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 FROM ruby:2.6.6
 
-RUN sudo apt install chromium-browser
-RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
+RUN apt install chromium-browser
+RUN dpkg -i google-chrome-stable_current_amd64.deb
 
 
 ADD entrypoint.sh /entrypoint.sh
