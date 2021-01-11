@@ -19,9 +19,17 @@ jobs:
       - uses: ./watir-action
         with:
           ENV: "Staging"
+      - name: Clean up workspace
+        run: |
+          echo "Cleaning up previous run"
+          sudo rm -rf "${{ github.workspace }}/testDir"
       - uses: actions/checkout@v2
         with:
           ref: "labeled-action"
       - uses: ./watir-action
         with:
           ENV: "Prod"
+      - name: Clean up workspace
+        run: |
+          echo "Cleaning up previous run"
+          sudo rm -rf "${{ github.workspace }}/testDir"
