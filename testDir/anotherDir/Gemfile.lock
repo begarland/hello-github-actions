@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bundle (0.0.1)
+      bundler
+
+PLATFORMS
+  x86_64-darwin-19
+
+DEPENDENCIES
+  bundle
+
+BUNDLED WITH
+   2.2.4
