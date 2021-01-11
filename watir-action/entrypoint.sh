@@ -8,6 +8,8 @@ cd $GITHUB_WORKSPACE/testDir/anotherDir
 
 pwd
 
+gem install bundler
+
 bundle exec config https://gems.weblinc.com
 bundle exec install --deployment
 
