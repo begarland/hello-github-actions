@@ -1,6 +1,9 @@
 FROM debian:9.5-slim
 
 
+
+FROM ruby:2.6.6
+
 # RUN gem install bundler
 
 
