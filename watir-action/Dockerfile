@@ -1,8 +1,8 @@
 FROM debian:jessie
 
-sudo apt-get install chromium-chromedriver 
+RUN sudo apt-get install chromium-chromedriver 
 
-/# FROM ruby:2.6.6
+FROM ruby:2.6.6
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
