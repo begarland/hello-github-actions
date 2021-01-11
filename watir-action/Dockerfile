@@ -1,7 +1,9 @@
-FROM debian:9.5-slim
+FROM ubuntu:latest
 FROM ruby:2.6.6
 
-RUN apt-get install chromium-chromedriver
+RUN sudo apt install chromium-browser
+RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
+
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
