@@ -6,7 +6,7 @@ FROM ruby:2.6.6
 
 RUN gem install bundler
 
-ADD Gemfile /$GITHUB_WORKSPACE/testDir/anotherDir/Gemfile
+ADD /$GITHUB_WORKSPACE/testDir/anotherDir/Gemfile Gemfile 
 
 RUN bundle config https://gems.weblinc.com
 # RUN echo cd $GITHUB_WORKSPACE/testDir/anotherDir
@@ -15,3 +15,6 @@ RUN bundle install --deployment
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+
+
+ADD Foo bar
