@@ -2,12 +2,12 @@ name: A workflow that should run soon
 on: push
 jobs:
   cleaner:
-  runs-on: self-hosted
-  steps:
-    - name: Runner workspace path
-      run: |
-        echo "Cleaning up previous run"
-        rm -rf "${{ github.workspace }}"
+    runs-on: self-hosted
+    steps:
+      - name: Runner workspace path
+        run: |
+          echo "Cleaning up previous run"
+          rm -rf "${{ github.workspace }}"
   build:
     name: Runs a Test
     runs-on: ubuntu-latest
