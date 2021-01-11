@@ -1,13 +1,6 @@
 name: A workflow that should run soon
 on: push
 jobs:
-  cleaner:
-    runs-on: self-hosted
-    steps:
-      - name: Runner workspace path
-        run: |
-          echo "Cleaning up previous run"
-          rm -rf "${{ github.workspace }}"
   build:
     name: Runs a Test
     runs-on: ubuntu-latest
@@ -16,6 +9,10 @@ jobs:
       - uses: ./watir-action
         with:
           ENV: "Qa"
+      - name: Clean up workspace
+          run: |
+            echo "Cleaning up previous run"
+            rm -rf "${{ github.workspace }}"
       - uses: actions/checkout@v2
         with:
           ref: "main"
