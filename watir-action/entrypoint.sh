@@ -20,8 +20,6 @@ bundle config https://gems.weblinc.com
 bundle install --deployment
 
 
-
-
 chmod +x $GITHUB_WORKSPACE/testDir/anotherDir/test.sh	
 sh -c $GITHUB_WORKSPACE/testDir/anotherDir/test.sh	
 
