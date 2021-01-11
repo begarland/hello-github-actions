@@ -1,18 +1,33 @@
-FROM alpine:latest
+FROM ubuntu:trusty
 
-RUN apk add --update --no-cache build-base libffi-dev ruby-dev ruby-rdoc zlib-dev chromium-chromedriver ruby-webrick
+RUN apt-get update; apt-get clean;
 
-# Installs latest stable Chromium package.
-RUN apk update && apk upgrade \
-    && echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories \
-    && echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/main >> /etc/apk/repositories \
-    && apk add --no-cache \
-    chromium@latest-stable \
-    nss@latest-stable \
-    && rm -rf /var/lib/apt/lists/* \
-    /var/cache/apk/* \
-    /usr/share/man \
-    /tmp/*
+# Add a user for running applications.
+RUN useradd apps
+RUN mkdir -p /home/apps && chown apps:apps /home/apps
+
+# Install x11vnc.
+RUN apt-get install -y x11vnc
+
+# Install xvfb.
+RUN apt-get install -y xvfb
+
+# Install fluxbox.
+RUN apt-get install -y fluxbox
+
+# Install wget.
+RUN apt-get install -y wget
+
+# Install wmctrl.
+RUN apt-get install -y wmctrl
+
+# Set the Chrome repo.
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+
+# Install Chrome.
+RUN apt-get update && apt-get -y install google-chrome-stable
+
 
 FROM ruby:2.6.6
 
