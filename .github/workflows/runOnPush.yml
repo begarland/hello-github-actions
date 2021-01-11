@@ -1,8 +1,8 @@
 name: A workflow that should run soon
 on: push
 jobs:
-  build:
-    name: Runs a Test
+  QA:
+    name: Runs the QA WATIR job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,6 +13,10 @@ jobs:
         run: |
           echo "Cleaning up previous run"
           sudo rm -rf "${{ github.workspace }}/testDir"
+  STAGING:
+    name: Runs the STAGING WATIR job
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
         with:
           ref: "main"
@@ -23,6 +27,10 @@ jobs:
         run: |
           echo "Cleaning up previous run"
           sudo rm -rf "${{ github.workspace }}/testDir"
+  PROD:
+    name: Runs the Production WATIR job
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
         with:
           ref: "labeled-action"
