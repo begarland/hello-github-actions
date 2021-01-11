@@ -1,4 +1,4 @@
-FROM debian:9.5-slim
+FROM alpine:latest
 FROM ruby:2.6.6
 
 ADD entrypoint.sh /entrypoint.sh
