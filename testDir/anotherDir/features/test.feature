@@ -1,4 +1,4 @@
 Feature: test
 
-Scenario: test 2
-    WHEN I am testing
+  Scenario: test2
+    When I am testing
