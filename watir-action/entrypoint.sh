@@ -13,6 +13,8 @@ gem install bundler
 bundle config https://gems.weblinc.com
 bundle install --deployment
 
+cd ~
+
 chmod +x $GITHUB_WORKSPACE/testDir/anotherDir/test.sh	
 sh -c $GITHUB_WORKSPACE/testDir/anotherDir/test.sh	
 

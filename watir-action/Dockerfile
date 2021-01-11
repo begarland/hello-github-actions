@@ -1,13 +1,12 @@
-FROM alpine:latest
-# FROM ruby:2.6.6
+FROM ruby:2.6.6
 
-RUN apk add --update --no-cache build-base libffi-dev ruby-dev ruby-rdoc zlib-dev chromium-chromedriver ruby-webrick
+RUN apt-get add --update --no-cache build-base libffi-dev ruby-dev ruby-rdoc zlib-dev chromium-chromedriver ruby-webrick
 
 # Installs latest stable Chromium package.
-RUN apk update && apk upgrade \
+RUN apt-get update && apt-get upgrade \
     && echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories \
     && echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/main >> /etc/apk/repositories \
-    && apk add --no-cache \
+    && apt-get add --no-cache \
     chromium@latest-stable \
     nss@latest-stable \
     && rm -rf /var/lib/apt/lists/* \
