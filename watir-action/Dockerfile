@@ -1,7 +1,6 @@
 FROM ubuntu:trusty
 
-RUN apt-get update && apt-get install -y \
-curl
+RUN apt-get update && apt-get install -y \ curl
 
 RUN sudo apt-get install wget
 
@@ -9,7 +8,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo ap
 RUN sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 
 RUN sudo apt-get update 
-RUN sudo apt-get install google-chrome-stable
+RUN sudo apt-get install -y \ google-chrome-stable
 
 # Install chromedriver for Selenium
 RUN curl https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -o /usr/local/bin/chromedriver
