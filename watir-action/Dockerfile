@@ -13,7 +13,7 @@ RUN curl https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.z
 RUN chmod +x /usr/local/bin/chromedriver
 
 
-FROM ruby:2.6.6
+# FROM ruby:2.6.6
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
