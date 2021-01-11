@@ -7,7 +7,7 @@ FROM ruby:2.6.6
 RUN gem install bundler
 
 
-ADD $GITHUB_WORKSPACE/testDir/anotherDir/Gemfile Gemfile 
+ADD /testDir/anotherDir/Gemfile Gemfile 
 
 RUN bundle config https://gems.weblinc.com
 RUN bundle install --deployment
