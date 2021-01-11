@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:latest
 FROM ruby:2.6.6
 
 ENV APP_BUNDLE_BIN /workarea/docker/bin
@@ -13,6 +13,7 @@ RUN apt-get update \
     google-chrome-stable \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
 
 
 ADD entrypoint.sh /entrypoint.sh
