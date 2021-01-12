@@ -11,7 +11,7 @@ pwd
 apt-get update
 apt-get install -y unzip xvfb libxi6 libgconf-2-4 gnupg2
 
-apt-get -y update
+# apt-get -y update
 apt-get -y install google-chrome-stable
 
 wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
