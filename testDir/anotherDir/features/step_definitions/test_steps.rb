@@ -12,9 +12,8 @@ When ('I am testing') do
     
     chromeOptions.add_argument("--disable-dev-shm-using") 
     chromeOptions.add_argument("--headless") 
-    
+
     b = Selenium::WebDriver.for(:chrome, options: chromeOptions)
-    b.manage.timeouts.page_load = 120
     b.get("https://google.com/") 
     b.quit()
 
