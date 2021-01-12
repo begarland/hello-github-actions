@@ -1,4 +1,4 @@
 #!/bin/bash
 
-bundle exec cucumber --publish
+bundle exec cucumber --retry 4 --publish 
 
