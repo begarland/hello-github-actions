@@ -9,10 +9,10 @@ jobs:
         with:
           status: custom
           fields: commit, repo, ref, author, took
+          mention: "@here"
           custom_payload: |
             {
               username: 'Slack Notifier',
-              channel: '@Chad Garland',
               icon_emoji: ':octocat:',
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
