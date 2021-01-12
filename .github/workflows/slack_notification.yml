@@ -4,11 +4,11 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    id: build
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
       - uses: act10ns/slack@v1
-        id: slack
         with:
           status: ${{ job.status }}
           steps: ${{ toJson(steps) }}
