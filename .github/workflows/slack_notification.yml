@@ -12,4 +12,5 @@ jobs:
         with:
           status: ${{ job.status }}
           steps: ${{ toJson(steps) }}
+          channel: "@slackbot"
         if: always()
