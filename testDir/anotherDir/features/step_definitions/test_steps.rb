@@ -29,7 +29,7 @@ When ('I am testing') do
     client.open_timeout = 600 
     driver =  Watir::Browser.new :chrome, :desired_capabilities => caps, 
                                  :http_client => client
-    driver.get("https://google.com/") 
+    driver.goto("https://google.com/") 
 
     log('testing')
     true
