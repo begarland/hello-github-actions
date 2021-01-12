@@ -16,7 +16,7 @@ When ('I am testing') do
     chromeOptions.add_argument("disable-infobars") 
     chromeOptions.add_argument("--headless") 
     chromeOptions.add_argument("user-data-dir=.\cookies\\" + login) 
-    b = webdriver.Options(chrome_options=chromeOptions) 
+    b = Selenium::WebDriver.for(:chrome, :options = chromeOptions)
     b.get("https://google.com/") 
     b.quit()
 
