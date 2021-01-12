@@ -12,7 +12,7 @@ jobs:
           custom_payload: |
             {
               username: 'Slack Notifier',
-              channel: '#random',
+              channel: '@Chad Garland',
               icon_emoji: ':octocat:',
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
