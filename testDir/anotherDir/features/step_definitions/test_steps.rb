@@ -13,3 +13,10 @@ When ('I am testing') do
     true
 end
 
+
+
+# need to pass --no-sandbox flag and make sure headless IS being passed in the other environment
+
+# next steps, clean up chrome download to remove unnecessary parts
+
+
