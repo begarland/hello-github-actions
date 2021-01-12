@@ -7,11 +7,12 @@ jobs:
     steps:
       - uses: 8398a7/action-slack@v3
         with:
-          status: custom
+          status: ${{ job.status }}
           fields: workflow, job, commit, repo, ref, author, took
           custom_payload: |
             {
               username: 'Slack Notifier',
+              channel: '@begarland',
               icon_emoji: ':octocat:',
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
