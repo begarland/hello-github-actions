@@ -1,4 +1,4 @@
-name: A workflow for WATIR tests
+name: Slack notification
 on: push
 
 jobs:
