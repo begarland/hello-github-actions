@@ -19,9 +19,9 @@ apt-get -y install google-chrome-stable
 wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 
-mv chromedriver /usr/bin/chromedriver
-chown root:root /usr/bin/chromedriver
-chmod +x /usr/bin/chromedriver
+mv chromedriver /usr/bin/google-chrome
+chown root:root /usr/bin/google-chrome
+chmod +x /usr/bin/google-chrome
 
 gem install bundler
 
