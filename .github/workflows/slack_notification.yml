@@ -8,7 +8,7 @@ jobs:
       - uses: 8398a7/action-slack@v3
         with:
           status: custom
-          channel: "@Chad Garland"
+          channel: "#idea-space"
           fields: workflow, job, commit, repo, ref, author, took
           custom_payload: |
             {
