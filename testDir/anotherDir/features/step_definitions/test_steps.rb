@@ -4,7 +4,7 @@ require 'watir'
 
 When ('I am testing') do
 
-    b = Watir::Browser.new :chrome, headless: true, switches: ['--ignore-certificate-errors']
+    b = Watir::Browser.new :chrome, headless: true, 'no-sandbox': true, switches: ['--ignore-certificate-errors']
 
     b.goto("https://google.com/") 
     b.quit()
