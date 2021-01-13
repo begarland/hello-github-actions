@@ -6,12 +6,8 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v1
       - id: set-matrix
-        run: |
-          JSON=$(cat $GITHUB_WORKSPACE/test.json)
-          echo "::set-output name=${JSON//'%'/'%25'}"
-
+        run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
   job2:
     needs: job1
     runs-on: ubuntu-latest
