@@ -42,7 +42,7 @@ jobs:
     steps:
       - id: test
         run: |
-          echo ${{parseJson(${{needs.job1.outputs.users}})[${{needs.job1.outputs.user}}]}}
+          echo ${{parseJSON(${{needs.job1.outputs.users}})[${{needs.job1.outputs.user}}]}}
 
       - uses: 8398a7/action-slack@v3
         with:
