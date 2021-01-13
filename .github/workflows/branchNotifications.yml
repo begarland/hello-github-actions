@@ -15,6 +15,6 @@ jobs:
           fields: message,author,took
           author_name: Github Build Notification
           text: "Code has been merged to main branch"
-          channel: U8F99104R
+          channel: U8FK92X8V
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
