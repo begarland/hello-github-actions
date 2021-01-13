@@ -26,9 +26,11 @@ jobs:
       - uses: 8398a7/action-slack@v3
         with:
           username: "Gitbot"
-          status: ${{ job.status }}
-          fields: repo,commit,message,author # default: repo,commit
+          status: custom
+          fields: ${{fromJson(needs.job1.outputs.users)[needs.job1.outputs.user].fields}}
           channel: ${{fromJson(needs.job1.outputs.users)[needs.job1.outputs.user].user_id}}
+          author_name: Github Build Notification
+
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: ${{fromJson(needs.job1.outputs.users)[needs.job1.outputs.user]}}
@@ -41,5 +43,7 @@ jobs:
           username: "Gitbot"
           status: ${{ job.status }}
           fields: repo,commit,message,author # default: repo,commit
+          author_name: Github Build Notification
+
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required

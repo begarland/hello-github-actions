@@ -1,3 +1,6 @@
 {
-  "begarland": { "user_id": "U8F99104R" }
+  "begarland": {
+    "user_id": "U8F99104R",
+    "fields": ["repo", "commit", "message", "author"]
+  }
 }
