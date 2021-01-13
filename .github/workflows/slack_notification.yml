@@ -9,6 +9,7 @@ jobs:
         with:
           status: custom
           fields: workflow, job, commit, repo, ref, author, took
+          channel: "@begarland"
           custom_payload: |
             {
               username: 'Slack Notifier',
