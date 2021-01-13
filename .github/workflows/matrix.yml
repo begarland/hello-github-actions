@@ -42,7 +42,7 @@ jobs:
           text: "Code has been merged to main branch"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: { { github.ref == 'ref/head/main' } }
+        if: github.ref == 'ref/head/main'
       - uses: 8398a7/action-slack@v3
         with:
           username: "Gitbot"
