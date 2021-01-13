@@ -27,7 +27,7 @@ jobs:
       - id: step1
         run: echo ::set-output name=users::'[{ "name":"Brandy", "user_id":"U8F99104R" }]'
       - id: step2
-        run: echo ::set-output name=user::$(echo $AS_AUTHOR})
+        run: echo ::set-output name=user::$(echo $github.event.pusher.name)
   job3:
     runs-on: ubuntu-latest
     needs: job1
