@@ -42,7 +42,6 @@ jobs:
     steps:
       - id: test
         run: |
-          echo ${{needs.job1.outputs.user}} ${{needs.job1.outputs.users}}
           echo ${contains(parseJson(${{needs.job1.outputs.users}}), ${{needs.job1.outputs.user}})}
 
       - uses: 8398a7/action-slack@v3
