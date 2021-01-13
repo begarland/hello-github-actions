@@ -30,7 +30,7 @@ jobs:
           author_name: Github Build Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].when}} && ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user]}}
+        if: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user]}} &&  ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].when}}
   send-to-channel:
     runs-on: ubuntu-latest
     steps:
