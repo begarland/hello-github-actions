@@ -41,7 +41,7 @@ jobs:
           status: ${{ job.status }}
           author_name: Integration Test # default: 8398a7@action-slack
           fields: repo,commit,message,author # default: repo,commit
-          channel: ${{needs.job1.outputs.users[${needs.job1.outputs.user}]}}
+          channel: ${{needs.job1.outputs.users[needs.job1.outputs.user]}}
           if_mention: failure,cancelled, success
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
