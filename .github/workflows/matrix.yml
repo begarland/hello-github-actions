@@ -22,7 +22,7 @@ jobs:
     needs: job2
     steps:
       - id: test
-        run: echo ${needs.job2.outputs.user} ${needs.job1.outputs.users[0]},
+        run: echo $(needs.job2.outputs.user) $(needs.job1.outputs.users[0]),
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
