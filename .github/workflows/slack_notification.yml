@@ -5,16 +5,12 @@ jobs:
   do-the-thing:
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-        SLACK_CHANNEL: '@begarland'
-        SLACK_COLOR: '#3278BD'
-        SLACK_ICON: https://github.com/rtCamp.png?size=48
-        SLACK_MESSAGE: 'Post Content :rocket:'
-        SLACK_TITLE: Post Title
-        SLACK_USERNAME: rtCamp
+      - uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_CHANNEL: "@begarland"
+          SLACK_COLOR: "#3278BD"
+          SLACK_USERNAME: devbot
 
         # - uses: 8398a7/action-slack@v3
         #   with:
