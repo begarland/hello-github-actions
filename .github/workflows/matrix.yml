@@ -17,7 +17,7 @@ jobs:
     needs: job1
     steps:
       - id: test
-        run: echo ${{needs.job1.outputs[0]}} ${{needs.job1.outputs[1]}},
+        run: echo ${{needs.job1.outputs.outputs1}} ${{needs.job1.outputs[1]}},
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
