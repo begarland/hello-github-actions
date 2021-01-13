@@ -1,6 +1,6 @@
 name: Slack notification
-on: 
-  push
+on:
+  push:
     branches:
       - main
 
