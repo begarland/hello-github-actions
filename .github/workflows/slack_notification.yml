@@ -9,7 +9,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           # SLACK_CHANNEL: "@begarland"
-          SLACK_COLOR: "#3278BD"
+          SLACK_COLOR: "#ffffff"
           SLACK_USERNAME: devbot
 
         # - uses: 8398a7/action-slack@v3
