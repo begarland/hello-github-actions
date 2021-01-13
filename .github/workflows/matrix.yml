@@ -33,7 +33,7 @@ jobs:
     needs: job1
     steps:
       - id: test
-        run: | 
+        run: |
           echo ${{needs.job1.outputs.user}} ${{needs.job1.outputs.users}}
           echo contains(${{needs.job1.outputs.users.*.username}}, ${{needs.job1.outputs.user}})
       - uses: 8398a7/action-slack@v3
@@ -41,7 +41,7 @@ jobs:
           status: ${{ job.status }}
           author_name: Integration Test # default: 8398a7@action-slack
           fields: repo,commit,message,author # default: repo,commit
-          channel: if: 
+          # channel:
           if_mention: failure,cancelled, success
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
