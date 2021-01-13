@@ -30,5 +30,7 @@ jobs:
           if_mention: failure,cancelled, success
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always() # Pick up events even if the job fails or is canceled.
+        if: always() # Pick up events even if the job fails or is canceled
+     - id: test
+        run: echo ${{needs.job2.outputs.user}},
 
