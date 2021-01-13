@@ -35,7 +35,7 @@ jobs:
       - id: test
         run: |
           echo ${{needs.job1.outputs.user}} ${{needs.job1.outputs.users}}
-          echo ${contains(${{needs.job1.outputs.users.*.username}}, ${{needs.job1.outputs.user}})}
+          # echo ${{contains(${{needs.job1.outputs.users.*.username}}, ${{needs.job1.outputs.user}})}}
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
