@@ -1,7 +1,7 @@
 name: build
 on: push
 jobs:
-  job1:
+  get-devs:
     runs-on: ubuntu-latest
     outputs:
       user: ${{ steps.step1.outputs.user }}
@@ -19,9 +19,9 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=users::$content"
-  job3:
+  send-to-dev:
     runs-on: ubuntu-latest
-    needs: job1
+    needs: get-devs
     steps:
       - uses: 8398a7/action-slack@v3
         with:
@@ -33,9 +33,8 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: ${{fromJson(needs.job1.outputs.users)[needs.job1.outputs.user]}}
-  job4:
+  send-to-channel:
     runs-on: ubuntu-latest
-    needs: job1
     steps:
       - uses: 8398a7/action-slack@v3
         with:
@@ -43,6 +42,5 @@ jobs:
           status: ${{ job.status }}
           fields: repo,commit,message,author # default: repo,commit
           author_name: Github Build Notification
-
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
