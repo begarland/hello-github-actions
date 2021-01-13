@@ -1,5 +1,5 @@
 {
-  "begarland": {
+  "bgarland": {
     "user_id": "U8F99104R",
     "fields": "repo,commit,eventName,ref,workflow,action,message,author,job,took",
     "when": "always()"
