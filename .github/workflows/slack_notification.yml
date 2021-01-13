@@ -5,22 +5,22 @@ jobs:
   do-the-thing:
     runs-on: ubuntu-latest
     steps:
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: custom
-          fields: workflow, job, commit, repo, ref, author, took
-          custom_payload: |
-            {
-              username: 'Slack Notifier',
-              icon_emoji: ':octocat:',
-              attachments: [{
-                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: `${process.env.AS_JOB} ${{ job.status }} by ${process.env.AS_AUTHOR} has completed in ${process.env.AS_TOOK}`,
-              }]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
+      # - uses: 8398a7/action-slack@v3
+      #   with:
+      #     status: custom
+      #     fields: workflow, job, commit, repo, ref, author, took
+      #     custom_payload: |
+      #       {
+      #         username: 'Slack Notifier',
+      #         icon_emoji: ':octocat:',
+      #         attachments: [{
+      #           color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+      #           text: `${process.env.AS_JOB} ${{ job.status }} by ${process.env.AS_AUTHOR} has completed in ${process.env.AS_TOOK}`,
+      #         }]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      #   if: always()
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
