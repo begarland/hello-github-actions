@@ -24,13 +24,14 @@ jobs:
       users: ${{ steps.step1.outputs.users }}
       user: ${{ steps.step2.outputs.user }}
     steps:
+      - uses: actions/checkout@v1
       - id: step1
         run: echo ::set-output name=users::'{"begarland":"U8F99104R", "test":"12334"}'
       - id: step2
         run: echo ::set-output name=user::${{github.event.pusher.name}}
       - id: step3
         run: |
-          content=`cat ./test.json`
+          content=`cat $GITHUB_WORKSPACE/test.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
