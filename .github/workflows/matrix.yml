@@ -25,7 +25,7 @@ jobs:
       user: ${{ steps.step2.outputs.user }}
     steps:
       - id: step1
-        run: echo ::set-output name=users::'[{ "name":"Brandy", "user_id":"U8F99104R" }]'
+        run: echo ::set-output name=users::'[{ "username":"begarland", "user_id":"U8F99104R" }]'
       - id: step2
         run: echo ::set-output name=user::${{github.event.pusher.name}}
   job3:
@@ -33,13 +33,15 @@ jobs:
     needs: job1
     steps:
       - id: test
-        run: echo ${{needs.job1.outputs.user}} ${{needs.job1.outputs.users}}
+        run: | 
+          echo ${{needs.job1.outputs.user}} ${{needs.job1.outputs.users}}
+          echo contains(${{needs.job1.outputs.users.*.username}}, ${{needs.job1.outputs.user}})
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
           author_name: Integration Test # default: 8398a7@action-slack
           fields: repo,commit,message,author # default: repo,commit
-          channel: ${{needs.job1.outputs.users[0].user_id}}
+          channel: if: 
           if_mention: failure,cancelled, success
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
