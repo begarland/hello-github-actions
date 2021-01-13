@@ -38,6 +38,8 @@ jobs:
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                 text: `${process.env.AS_JOB} ${{ job.status }} by ${process.env.AS_AUTHOR} has completed in ${process.env.AS_TOOK}`,
               }]
+              channel: ${{fromJson(needs.job1.outputs.users)[needs.job1.outputs.user].user_id}}
+
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
