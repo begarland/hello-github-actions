@@ -44,7 +44,6 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          author_name: Integration Test # default: 8398a7@action-slack
           fields: repo,commit,message,author # default: repo,commit
           channel: ${{fromJson(needs.job1.outputs.users)[needs.job1.outputs.user]}}
         env:
@@ -58,7 +57,6 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          author_name: Integration Test # default: 8398a7@action-slack
           fields: repo,commit,message,author # default: repo,commit
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
