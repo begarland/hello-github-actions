@@ -1,5 +1,7 @@
 name: Slack notification
 on: push
+  branches:
+    -main
 
 jobs:
   do-the-thing:
