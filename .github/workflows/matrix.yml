@@ -6,9 +6,10 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v1
       - id: set-matrix
         run: |
-          JSON=$(cat ./test.json)
+          JSON=$(cat $GITHUB_WORKSPACE/test.json)
           echo "::set-output name=${JSON//'%'/'%25'}"
 
   job2:
