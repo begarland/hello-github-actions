@@ -35,7 +35,7 @@ jobs:
       - id: test
         run: |
           echo ${{needs.job1.outputs.user}} ${{needs.job1.outputs.users}}
-          echo ${{needs.job1.outputs.users[needs.job1.outputs.user]}}
+          echo ${{needs.job1.outputs.users.[needs.job1.outputs.user]}}
 
       - uses: 8398a7/action-slack@v3
         with:
