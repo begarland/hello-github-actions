@@ -12,7 +12,7 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          fields: repo,commit,message,author # default: repo,commit
+          fields: message,author,took
           author_name: Github Build Notification
           text: "Code has been merged to main branch"
         env:
