@@ -1,6 +1,13 @@
 name: build
 on: push
 jobs:
+
+  name: Checkout the repo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+
   # job1:
   #   runs-on: ubuntu-latest
   #   # Map a step output to a job output
@@ -27,7 +34,7 @@ jobs:
       - id: step1
         run: echo ::set-output name=users::'[{ "name":"Brandy", "user_id":"U8F99104R" }]'
       - id: step2
-        run: echo ::set-output name=user::'Brandy'
+        run: echo ::set-output name=user::'${{process.env.AS_AUTHOR}}'
   job3:
     runs-on: ubuntu-latest
     needs: job1
