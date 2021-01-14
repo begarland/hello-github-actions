@@ -7,8 +7,8 @@ curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $INPUT_BEARER" \
 --data-raw "{
-    "channel": "$INPUT_CHANNEL"
-    "text": "$INPUT_MESSAGE"
+    "channel": "${$INPUT_CHANNEL}",
+    "text": "hello world"
 }"
 
-echo "message sent"
+echo "message"
