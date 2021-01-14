@@ -6,7 +6,7 @@ on:
       - staging
 
 jobs:
-  send-alert-to-channel-on-main-push:
+  send-alert-to-digital-channel-on-main-push:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
@@ -19,4 +19,18 @@ jobs:
           text: "Code has been merged from ${{ GITHUB_REF }} to `main` :party-wizard:"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if:
+        if: always()
+  send-alert-to-developer-channel-on-staging-push:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging'
+    steps:
+      - uses: 8398a7/action-slack@v3
+        with:
+          username: "Gitbot"
+          status: ${{ job.status }}
+          fields: message,author,took
+          author_name: Build ${{ job.status }}
+          text: "Code has been merged from ${{ GITHUB_REF }} to `staging` :party-wizard:"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always()
