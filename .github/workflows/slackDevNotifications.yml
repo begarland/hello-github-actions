@@ -43,7 +43,7 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          fields: repo,commit,message,author,took # default: repo,commit
+          fields: message,author,took # default: repo,commit
           author_name: Github Build Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
