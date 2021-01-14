@@ -1,18 +1,13 @@
 #!/bin/bash -l
 
 apt-get update
-apt-get install -y wget
+apt-get install -y curl
 
 
-AUTH='Authorization: Bearer $INPUT_BEARER'
-
-wget --no-check-certificate --quiet \
-  --method POST \
-  --timeout=0 \
-  --header 'Content-Type: application/json' \
-  --header $AUTH \
-  --body-data '{
+curl --location --request POST "https://slack.com/api/chat.postMessage" \
+--header "Content-Type: application/json' \
+--header 'Authorization: Bearer ${$INPUT_BEARER}' \
+--data-raw '{
     "channel": "U0149HC3PFV",
     "text": "hello world"
-}' \
-   'https://slack.com/api/chat.postMessage?'
+}'
