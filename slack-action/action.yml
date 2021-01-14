@@ -2,15 +2,16 @@ name: "Slack Notifications"
 description: "Notifies the development team via slack"
 
 runs:
-  using: 8398a7/action-slack@v3
-    name: send-to-channel
-    with:
-      username: "Gitbot"
-      status: ${{ job.status }}
-      # fields: author,took # default: repo,commit
-      author_name: Github Build ${{ job.status }}
-      text:
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-    if: always()
+  steps: 
+    uses: 8398a7/action-slack@v3
+      name: send-to-channel
+      with:
+        username: "Gitbot"
+        status: ${{ job.status }}
+        # fields: author,took # default: repo,commit
+        author_name: Github Build ${{ job.status }}
+        text:
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      if: always()
 # take in optional input message from other jobs calling this action
