@@ -4,6 +4,7 @@ on: push
 jobs:
   get-dev:
     runs-on: ubuntu-latest
+    name: Get the developer name
     outputs:
       user: ${{ steps.step1.outputs.user }}
       users: ${{ steps.step2.outputs.users }}
@@ -35,7 +36,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           CHANNEL: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].slack_id}}
-          MESSAGE: "Your build ${{fromJson(needs.get-dev.outputs.messages).job.status[job.status]}}"
+          MESSAGE: "Your build for ${{needs.get-dev.name}} ${{fromJson(needs.get-dev.outputs.messages).job.status[job.status]}}"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
