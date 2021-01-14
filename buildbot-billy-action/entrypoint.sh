@@ -8,5 +8,7 @@ curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Authorization: Bearer $INPUT_BEARER" \
 --data-raw '{
     "channel": "U0149HC3PFV",
-    "text": "hello world"
+    "text": "hello world :party-wizard:"
 }'
+
+echo "message sent"
