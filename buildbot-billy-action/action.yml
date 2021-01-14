@@ -1,0 +1,17 @@
+name: Notify development team via Slack
+description: Utilize Buildbot Billy
+
+inputs:
+  BEARER:
+    description: "A token for slack outh"
+    required: true
+  MESSAGE:
+    description: "Message to send"
+    default: "Hello world!"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.BEARER }}
+    - ${{ inputs.MESSAGE }}
