@@ -27,7 +27,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           CHANNEL: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].slack_id}}
-          MESSAGE: "Hello, your job has ${{ job.status }} :party-wizard:"
+          MESSAGE: "Your build '${{ job.status }}' === 'success' ? 'has completed successfully :mav-sunnys:' : '${{ job.status }}' === 'failure' ? 'has failed. :party-try-not-to-cry:' : 'has been cancelled. :suspicious:',"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
