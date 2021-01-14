@@ -2,7 +2,7 @@ name: "Slack Notifications"
 description: "Notifies the development team via slack"
 
 runs:
-  - uses: 8398a7/action-slack@v3
+  using: 8398a7/action-slack@v3
     name: send-to-channel
     with:
       username: "Gitbot"
