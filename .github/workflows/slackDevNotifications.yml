@@ -1,17 +1,13 @@
 name: Send channel and developer notifications
 on:
-  - push:
+  push:
     branches:
       - "!main"
 
-  - pull_request:
-      types: [opened, closed]
-  - pull_request_review:
-      types: [submitted, edited, dismissed]
-  -
-  # push:
-  # branches:
-  # - !main
+  pull_request:
+    types: [opened, closed]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
 
 jobs:
   get-dev:
