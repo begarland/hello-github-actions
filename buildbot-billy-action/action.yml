@@ -3,11 +3,14 @@ description: Utilize Buildbot Billy
 
 inputs:
   BEARER:
-    description: "A token for slack outh"
+    description: "A token for slack OAuth"
     required: true
   MESSAGE:
     description: "Message to send"
     default: "Hello world!"
+  CHANNEL:
+    descrption: "Who to send the message to"
+    default: "U0149HC3PFV"
 
 runs:
   using: "docker"
@@ -15,3 +18,4 @@ runs:
   args:
     - ${{ inputs.BEARER }}
     - ${{ inputs.MESSAGE }}
+    - ${{ inputs.CHANNEL }}
