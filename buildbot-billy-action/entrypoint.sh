@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-apt-get update
+# apt-get update
 apt-get install -y curl
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
