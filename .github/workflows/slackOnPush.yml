@@ -1,5 +1,9 @@
-name: build
-on: push
+name: Send channel and developer notifications
+on:
+  push:
+    branches:
+      - !main
+
 jobs:
   get-dev:
     runs-on: ubuntu-latest
@@ -26,7 +30,7 @@ jobs:
           username: "Gitbot"
           status: ${{ job.status }}
           fields: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].fields}}
-          channel: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].user_id}}
+          channel: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].slack_id}}
           author_name: Github Build Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
