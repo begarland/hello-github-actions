@@ -5,7 +5,7 @@ apt-get install -y curl
 
 CHANNEL='"channel": '"$INPUT_CHANNEL"
 
-echo CHANNEL
+echo $CHANNEL
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
