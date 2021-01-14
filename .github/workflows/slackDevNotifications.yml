@@ -47,7 +47,7 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          # fields: author,took # default: repo,commit
+          fields: author,took # default: repo,commit
           author_name: Github Build ${{ job.status }}
           text:
         env:
