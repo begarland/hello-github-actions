@@ -4,6 +4,7 @@ apt-get update
 apt-get install -y curl 
 
 echo "sending slack ping..."
+echo $INPUT_MESSAGE
 
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
