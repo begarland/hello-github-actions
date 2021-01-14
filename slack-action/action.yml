@@ -15,3 +15,4 @@ runs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       if: always()
+# take in optional input message from other jobs calling this action
