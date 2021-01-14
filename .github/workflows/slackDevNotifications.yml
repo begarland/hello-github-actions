@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - "!main"
-
   pull_request:
     types: [opened, closed]
   pull_request_review:
@@ -43,13 +42,13 @@ jobs:
   send-to-channel:
     runs-on: ubuntu-latest
     steps:
-      - uses: 8398a7/action-slack@v3
-        with:
-          username: "Gitbot"
-          status: ${{ job.status }}
-          # fields: author,took # default: repo,commit
-          author_name: Github Build ${{ job.status }}
-          text:
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always()
+      - uses: ./slack-action
+        # with:
+        #   username: "Gitbot"
+        #   status: ${{ job.status }}
+        #   # fields: author,took # default: repo,commit
+        #   author_name: Github Build ${{ job.status }}
+        #   text:
+        # env:
+        #   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        # if: always()
