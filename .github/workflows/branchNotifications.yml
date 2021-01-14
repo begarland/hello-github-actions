@@ -16,7 +16,7 @@ jobs:
           status: ${{ job.status }}
           fields: message,author,took
           author_name: Build ${{ job.status }}
-          text: "Code has been merged to `main`"
+          text: "Code has been merged to `main` :party-wizard:"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if:
