@@ -2,19 +2,38 @@ name: Billy sends channel and developer notifications
 on: push
 
 jobs:
+  get-dev:
+    runs-on: ubuntu-latest
+    outputs:
+      user: ${{ steps.step1.outputs.user }}
+      users: ${{ steps.step2.outputs.users }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: step1
+        run: echo ::set-output name=user::${{github.event.pusher.name}}
+      - id: step2
+        run: |
+          content=`cat $GITHUB_WORKSPACE/users.json`
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          echo "::set-output name=users::$content"
   send-message:
+    needs: get-dev
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
+          CHANNEL: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].slack_id}}
           MESSAGE: ":party-wizard:"
-  send-another-message:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./buildbot-billy-action
-        with:
-          BEARER: ${{ secrets.BUILDBOT_BEARER}}
-          MESSAGE: ":party-parrot:"
+  # send-another-message:
+  #   needs: get-dev
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: ./buildbot-billy-action
+  #       with:
+  #         BEARER: ${{ secrets.BUILDBOT_BEARER}}
+  #         MESSAGE: ":party-parrot:"
