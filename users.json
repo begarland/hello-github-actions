@@ -1,6 +1,5 @@
 {
   "begarland": {
-    "slack_id": "U0149HC3PFV",
-    "fields": "repo,commit,eventName,ref,workflow,action,message,author,job,took"
+    "slack_id": "U0149HC3PFV"
   }
 }
