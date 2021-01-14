@@ -15,8 +15,8 @@ jobs:
           username: "Gitbot"
           status: ${{ job.status }}
           fields: message,author,took
-          author_name: Github Build ${{ job.status }}
-          text: "Code has been merged to main"
+          author_name: Build ${{ job.status }}
+          text: "Code has been merged to `main`"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if:
