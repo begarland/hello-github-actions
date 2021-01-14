@@ -1,6 +1,14 @@
 name: Send channel and developer notifications
 on:
-  push
+  - push:
+    branches:
+      - "!main"
+
+  - pull_request:
+      types: [opened, closed]
+  - pull_request_review:
+      types: [submitted, edited, dismissed]
+  -
   # push:
   # branches:
   # - !main
@@ -43,8 +51,9 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          fields: message,author,took # default: repo,commit
-          author_name: Github Build Notification
+          # fields: author,took # default: repo,commit
+          author_name: Github Build ${{ job.status }}
+          text:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always()
