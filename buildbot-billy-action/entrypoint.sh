@@ -8,7 +8,7 @@ echo 'HELLO WORLD'
 echo 'Authorization\: Bearer ${$INPUT_BEARER}'
 
 echo 'test: one'
-echo 'bearer'
+echo 'Bearer'
 
 echo $INPUT_BEARER
 
