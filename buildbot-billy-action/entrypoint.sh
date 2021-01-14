@@ -6,7 +6,7 @@ apt-get install -y curl
 
 AUTH=`Authorization: Bearer $INPUT_BEARER`
 
-curl --location --request POST "https://slack.com/api/chat.postMessage" \
+curl --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
 --header $AUTH \
 --data-raw '{
