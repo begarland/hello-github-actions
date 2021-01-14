@@ -5,8 +5,10 @@ apt-get install -y curl
 
 echo 'HELLO WORLD'
 
-echo "Authorization\: Bearer ${$INPUT_BEARER}"
+echo 'Authorization\: Bearer ${$INPUT_BEARER}'
 
+echo 'test: one'
+echo '::::'
 
 echo $INPUT_BEARER
 
