@@ -3,6 +3,8 @@
 apt-get update
 apt-get install -y curl 
 
+echo "sending slack ping..."
+
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
@@ -17,4 +19,4 @@ curl --location --request POST "https://slack.com/api/chat.postMessage" \
     $TEXT
 }"
 
-echo "message"
+echo "ping sent..."
