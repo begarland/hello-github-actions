@@ -4,7 +4,7 @@ apt-get update
 apt-get install -y wget
 
 
-AUTH=`Authorization: Bearer $INPUT_BEARER`
+AUTH='Authorization: Bearer $INPUT_BEARER'
 
 wget --no-check-certificate --quiet \
   --method POST \
