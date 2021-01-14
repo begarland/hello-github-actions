@@ -1,8 +1,9 @@
 name: Send channel and developer notifications
 on:
-  push:
-    branches:
-      - !main
+  push
+  # push:
+  # branches:
+  # - !main
 
 jobs:
   get-dev:
