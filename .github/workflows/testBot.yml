@@ -36,7 +36,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           CHANNEL: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].slack_id}}
-          MESSAGE: "Your build for ${{$GITHUB_REF}} ${{fromJson(needs.get-dev.outputs.messages).job.status[job.status]}}"
+          MESSAGE: "Your build for $GITHUB_REF ${{fromJson(needs.get-dev.outputs.messages).job.status[job.status]}}"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
