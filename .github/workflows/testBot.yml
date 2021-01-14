@@ -3,7 +3,8 @@ on: push
 
 jobs:
   send-message:
-    - uses: actions/checkout@v2
-    - uses: ./buildbot-billy-action
-      with:
-        BEARER: ${{ secrets.BUILDBOT_BEARER }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
