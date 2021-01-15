@@ -9,8 +9,8 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-pwd 
-echo find $(pwd) -maxdepth 1 -type f -not -path '*/\.*' | sort
+pwd  
+$(find $(pwd) -maxdepth 1 -type f -not -path '*/\.*' | sort)
 
 echo cat ./messages.json
 
