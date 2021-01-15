@@ -10,8 +10,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           STATUS: "${{ job.status }} "
-          # DEVELOPER: "${{ github.event.pusher.name }}"
-          MESSAGE: "${{ job.status }} "
+\         MESSAGE: "${{ job.status }} "
           CHANNEL: ""
   # send-another-message:
   #   needs: get-dev

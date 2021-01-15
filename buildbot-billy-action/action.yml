@@ -14,10 +14,9 @@ inputs:
   DEVELOPER:
     description: "developer that pushed the commit"
     default: ${{  github.event.pusher.name }}
-
   CHANNEL:
     description: "Send the message to this channel"
-    default: "U0149HC3PFV"
+    default: false
 
 runs:
   using: "docker"
@@ -27,3 +26,4 @@ runs:
     - ${{ inputs.STATUS }}
     - ${{ inputs.MESSAGE }}
     - ${{ inputs.DEVELOPER }}
+    - ${{ inputs.CHANNEL }}

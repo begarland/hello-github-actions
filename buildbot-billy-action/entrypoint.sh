@@ -5,6 +5,9 @@ apt-get install -y curl jq
 
 echo "sending slack ping..."
 
+CHANNELS_FILE='/channels.json'
+CHANNELS=$(cat "$CHANNELS_FILE")
+
 MESSAGES_FILE="/messages.json"
 MESSAGES=$(cat "$MESSAGES_FILE")
 
@@ -13,6 +16,12 @@ USERS=$(cat "$USERS_FILE")
 
 CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
+
+
+if [$INPUT_CHANNEL]
+then CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"`
+echo $CHANNEL_ID
+fi
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': $STATUS_MESSAGE" 
