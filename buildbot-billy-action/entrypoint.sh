@@ -1,13 +1,15 @@
 #!/bin/bash -l
 
 apt-get update
-apt-get install -y curl 
+apt-get install -y curl jq
 
 echo "sending slack ping..."
 echo $INPUT_MESSAGE
 
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
+
+echo jq "$GITHUB_WORKSPACE/.slack_integration/message.json"
 
 echo $CHANNEL
 echo $TEXT
