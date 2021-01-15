@@ -1,9 +1,9 @@
 {
   "job": {
     "status": {
-      "success": "has completed successfully. :mav-sunnys:",
-      "failure": "has failed. :party-try-not-to-cry:",
-      "cancelled": "has been cancelled. :suspicious:"
+      "success": "Your build has completed successfully. :mav-sunnys:",
+      "failure": "Your build has failed. :party-try-not-to-cry:",
+      "cancelled": "Your build has been cancelled. :suspicious:"
     }
   }
 }
