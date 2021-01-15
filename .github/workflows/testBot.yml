@@ -1,8 +1,8 @@
 name: Billy sends channel and developer notifications
 on:
-  push
-  pull_request:
-    types: [synchronize]
+  - push
+  - pull_request:
+      types: [synchronize]
 
 jobs:
   send-message:
