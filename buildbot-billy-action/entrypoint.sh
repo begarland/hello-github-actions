@@ -22,9 +22,13 @@ STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"`
 
 FULL_MESSAGE="${STATUS_MESSAGE}\n${INPUT_MESSAGE}"
 
+echo $FULL_MESSAGE
+
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': $FULL_MESSAGE" 
 
+
+ 
 echo $CHANNEL
 echo $TEXT
 
