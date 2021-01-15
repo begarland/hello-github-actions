@@ -9,8 +9,9 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
+file="/messages.json"
 
-MESSAGES= source "./messages.json"
+MESSAGES=$(cat "$file")
 echo $MESSAGES
 
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.fruit'
