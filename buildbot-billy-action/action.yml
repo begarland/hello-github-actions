@@ -11,6 +11,12 @@ inputs:
   MESSAGE:
     description: "Message to send"
     default: "Hello world!"
+  PR_TITLE:
+    description: "PR details"
+    default: ${{ github.event.pull_request.title }}
+  PR_LINK:
+    description: "PR Link"
+    default: ${{ github.event.pull_request.html_url }}
   DEVELOPER:
     description: "developer that opened the pull request"
     default: ${{ github.event.pull_request.user.login }}
@@ -24,6 +30,8 @@ runs:
   args:
     - ${{ inputs.BEARER }}
     - ${{ inputs.STATUS }}
+    - ${{ inputs.PR_TITLE }}
+    - ${{ inputs.PR_LINK }}
     - ${{ inputs.MESSAGE }}
     - ${{ inputs.DEVELOPER }}
     - ${{ inputs.CHANNEL }}
