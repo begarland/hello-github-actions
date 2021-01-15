@@ -22,6 +22,8 @@ STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 CHANNEL="'"'channel'"': $CHANNEL_ID" 
 TEXT="'"'text'"': $STATUS_MESSAGE" 
 
+echo $CHANNEL
+
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $INPUT_BEARER" \
