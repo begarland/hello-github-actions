@@ -11,7 +11,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           STATUS: "${{ job.status }} "
-          MESSAGE: "${{ job.status }} "
+          MESSAGE: ":party-wizard:"
           CHANNEL: "treehouse"
   # send-another-message:
   #   needs: get-dev

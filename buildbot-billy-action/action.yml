@@ -13,7 +13,7 @@ inputs:
     default: "Hello world!"
   DEVELOPER:
     description: "developer that opened the pull request"
-    default: ${{   github.event.pull_request.user.login }}
+    default: ${{ github.event.pull_request.user.login }}
   CHANNEL:
     description: "Send the message to this channel"
     default: false

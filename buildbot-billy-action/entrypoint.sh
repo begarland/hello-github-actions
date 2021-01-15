@@ -23,8 +23,10 @@ then CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"`
 echo $CHANNEL_ID
 fi
 
+FULL_MESSAGE="$STATUS_MESSAGE \n $INPUT_MESSAGE"
+
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
-TEXT="'"'text'"': $STATUS_MESSAGE" 
+TEXT="'"'text'"': $FULL_MESSAGE" 
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
