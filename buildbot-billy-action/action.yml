@@ -12,8 +12,8 @@ inputs:
     description: "Message to send"
     default: "Hello world!"
   DEVELOPER:
-    description: "developer that pushed the commit"
-    default: ${{  github.event.pusher.name }}
+    description: "developer that opened the pull request"
+    default: ${{   github.event.pull_request.user.login }}
   CHANNEL:
     description: "Send the message to this channel"
     default: false
