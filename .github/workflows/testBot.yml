@@ -20,7 +20,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           JOB: fromJson(needs.job1.outputs.job)
-          MESSAGE: ":party-wizard: ${{ fromJson( ${{needs.job1.outputs.job}} )}}"
+          MESSAGE: ":party-wizard: ${{ fromJson( needs.job1.outputs.job )}}"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
