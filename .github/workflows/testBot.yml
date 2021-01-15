@@ -4,6 +4,7 @@ on: push
 jobs:
   send-message:
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
@@ -11,6 +12,7 @@ jobs:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           STATUS: "${{ job.status }} "
           MESSAGE: "${{ job.status }} "
+          CHANNEL: "treehouse"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
