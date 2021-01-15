@@ -5,11 +5,14 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      job: ${{ steps.step1.outputs.job }} # map step output to job output
+      status: ${{ steps.step1.outputs.status }}
+      jobName: ${{ steps.step2.outputs.jobName }}
     steps:
       - id: step1
-        name: save job value
-        run: echo "::set-output name=job::${{job.status}}"
+        run: echo "::set-output name=status::${{job.status}}"
+      - id: step2
+        run: echo "::set-output name=jobName::${{job.name}}"
+
   send-message:
     runs-on: ubuntu-latest
     if: always()
@@ -19,7 +22,8 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          STATUS: ${{needs.job1.outputs.job}}
+          STATUS: ${{ needs.job1.outputs.status }}
+          JOB_NAME: ${{ needs.job1.outputs.jobName }}
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
