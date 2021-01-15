@@ -9,7 +9,7 @@ jobs:
     steps:
       - id: step1
         name: save job value
-        run: echo "::set-output name=job::${{fromJson(job)}}"
+        run: echo "::set-output name=job::${{job}}"
   send-message:
     runs-on: ubuntu-latest
     if: always()
