@@ -5,6 +5,9 @@ inputs:
   BEARER:
     description: "A token for slack OAuth"
     required: true
+  STATUS:
+    description: "The job status"
+    required: true
   MESSAGE:
     description: "Message to send"
     default: "Hello world!"
@@ -17,5 +20,6 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.BEARER }}
+    - ${{ inputs.STATUS }}
     - ${{ inputs.MESSAGE }}
     - ${{ inputs.CHANNEL }}

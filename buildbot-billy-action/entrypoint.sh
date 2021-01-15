@@ -9,7 +9,7 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-STATUS_MESSAGE = ".job.status.$INPUT_MESSAGE"
+STATUS_MESSAGE = ".job.status.$INPUT_STATUS"
 
 file="/messages.json"
 
