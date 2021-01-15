@@ -11,19 +11,11 @@ MESSAGES=$(cat "$MESSAGES_FILE")
 USERS_FILE="/users.json"
 USERS=$(cat "$USERS_FILE")
 
-echo $INPUT_DEVELOPER
-
 CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
-
-echo $CHANNEL_ID
-
 STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': $STATUS_MESSAGE" 
-
-echo $CHANNEL
-echo $
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
