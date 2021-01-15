@@ -14,11 +14,11 @@ file="/messages.json"
 MESSAGES=$(cat "$file")
 STATUS_MESSAGE=$($MESSAGES | jq ".job.status.$INPUT_STATUS")
 
-echo $STATUS_MESSAGE
+TEST = $(echo $STATUS_MESSAGE)
 
 
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
-TEXT='"text": ''" Your job '$(echo $STATUS_MESSAGE)'"'
+TEXT='"text": ''" Your job '$STATUS_MESSAGE)'"'
 
 echo $CHANNEL
 echo $TEXT
