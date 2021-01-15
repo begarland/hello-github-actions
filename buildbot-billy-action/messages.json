@@ -1,9 +1,1 @@
-{
-  "job": {
-    "status": {
-      "success": "has completed successfully. :mav-sunnys:",
-      "failure": "has failed. :party-try-not-to-cry:",
-      "cancelled": "has been cancelled. :suspicious:"
-    }
-  }
-}
+{ "fruit": { "name": "apple", "color": "green", "price": 1.2 } }
