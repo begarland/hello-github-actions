@@ -14,16 +14,16 @@ MESSAGES=$(cat "$MESSAGES_FILE")
 USERS_FILE="/users.json"
 USERS=$(cat "$USERS_FILE")
 
-CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
-STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
+CHANNEL_ID=`echo $USERS | jq -r ".$INPUT_DEVELOPER.slack_id"`
+STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"`
 
 
-if [$INPUT_CHANNEL != false]
-then CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"`
+if [$INPUT_CHANNEL != "none"]
+then CHANNEL_ID=`echo $CHANNELS | jq -r ".$INPUT_CHANNEL"`
 echo $CHANNEL_ID
 fi
 
-FULL_MESSAGE=`$STATUS_MESSAGE \n $INPUT_MESSAGE`
+FULL_MESSAGE="$STATUS_MESSAGE \n $INPUT_MESSAGE"
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': $FULL_MESSAGE" 

@@ -16,7 +16,7 @@ inputs:
     default: ${{ github.event.pull_request.user.login }}
   CHANNEL:
     description: "Send the message to this channel"
-    default: false
+    default: "none"
 
 runs:
   using: "docker"
