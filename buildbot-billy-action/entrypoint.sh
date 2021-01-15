@@ -11,8 +11,9 @@ MESSAGES=$(cat "$MESSAGES_FILE")
 USERS_FILE="/users.json"
 USERS=$(cat "$USERS_FILE")
 
-CHANNEL_ID=`echo $MESSAGES | jq ".$INPUT_DEVELOPER.slack_id"`
+CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
+echo CHANNEL_ID
 
 STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
