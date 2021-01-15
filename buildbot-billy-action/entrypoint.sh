@@ -9,14 +9,13 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-STATUS_MESSAGE = ".job.status.$INPUT_STATUS"
 
 file="/messages.json"
 
 MESSAGES=$(cat "$file")
 echo $MESSAGES
 
-echo $MESSAGES | jq "$STATUS_MESSAGE"
+echo $MESSAGES | jq ".job.status.$INPUT_STATUS"
 
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.fruit'
 
