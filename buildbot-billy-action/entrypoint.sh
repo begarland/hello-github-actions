@@ -6,8 +6,6 @@ apt-get install -y curl jq
 echo "sending slack ping..."
 echo $INPUT_MESSAGE
 
-
-
 FILE="/messages.json"
 
 MESSAGES=$(cat "$FILE")
@@ -16,8 +14,6 @@ STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT="'"'text'"': $STATUS_MESSAGE" 
-
-echo $TEXT
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
