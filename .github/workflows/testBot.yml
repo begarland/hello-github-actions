@@ -9,7 +9,7 @@ jobs:
     steps:
       - id: step1
         name: save job value
-        run: echo "::set-output name=job::${{job.status}}"
+        run: echo "::set-output name=job::${{job}}"
   send-message:
     runs-on: ubuntu-latest
     if: always()
@@ -19,8 +19,8 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
-          STATUS: ${{ needs.job1.outputs.job }}
-          MESSAGE: ":party-wizard:"
+          STATUS: ${{ needs.job1.outputs.job.status }}
+          MESSAGE: ":party-wizard: ${{fromJson(needs.job1.output.job)}}"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
