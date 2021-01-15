@@ -8,21 +8,14 @@ echo $INPUT_MESSAGE
 
 
 
-file="/messages.json"
+FILE="/messages.json"
 
-MESSAGES=$(cat "$file")
-# STATUS_MESSAGE=
+MESSAGES=$(cat "$FILE")
 
-TEST=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
-
-# echo $STATUS_MESSAGE
-echo $TEST
+STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
-TEXT='"text": ''" Your job '$TEST'"'
-
-echo $CHANNEL
-echo $TEXT
+TEXT='"text": ''"'$STATUS_MESSAGE'"'
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
