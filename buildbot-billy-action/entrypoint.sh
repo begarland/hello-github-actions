@@ -9,9 +9,8 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-MESSAGES='"status":{"success":"has completed successfully. :mav-sunnys:","failure":"has failed. :party-try-not-to-cry:","cancelled":"has been cancelled. :suspicious:"}' | jq '.status'
 
-echo $MESSAGES
+echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.fruit'
 
 echo $CHANNEL
 echo $TEXT
