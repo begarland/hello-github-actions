@@ -11,8 +11,9 @@ TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
 pwd 
 
+echo cat ./messages.json
 
-MESSAGES= $(jq . < .messages.json)
+MESSAGES= $(jq . < ./messages.json)
 
 echo $MESSAGES
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.'
