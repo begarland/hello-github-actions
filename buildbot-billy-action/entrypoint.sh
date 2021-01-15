@@ -19,7 +19,7 @@ echo $CHANNEL_ID
 
 STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
-CHANNEL='"channel": ''"'$CHANNEL_ID'",'
+CHANNEL="'"'channel'"': $CHANNEL_ID" 
 TEXT="'"'text'"': $STATUS_MESSAGE" 
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
