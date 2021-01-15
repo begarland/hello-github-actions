@@ -25,9 +25,14 @@ echo $INPUT_PR_LINK
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
+
+[[ ! -z "$INPUT_MESSAGE" ]] && MSG="$INPUT_MESSAGE\n" || MSG="$INPUT_MESSAGE" 
+
+
+
 FULL_MESSAGE="
 $INPUT_JOB_NAME $STATUS_MESSAGE\n
-$INPUT_MESSAGE\n 
+$MSG
 View your pull request here: $INPUT_PR_LINK"
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
