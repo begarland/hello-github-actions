@@ -9,12 +9,9 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-pwd  
-$(find $(pwd) -maxdepth 1 -type f -not -path '*/\.*' | sort)
 
-echo cat ./messages.json
 
-MESSAGES= $(jq . < ./messages.json)
+MESSAGES= $(jq . < messages.json)
 
 echo $MESSAGES
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.'
