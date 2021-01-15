@@ -28,6 +28,9 @@ FULL_MESSAGE="$STATUS_MESSAGE \n $INPUT_MESSAGE"
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': $FULL_MESSAGE" 
 
+
+echo $TEXT
+
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $INPUT_BEARER" \
