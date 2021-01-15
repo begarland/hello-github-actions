@@ -18,7 +18,7 @@ CHANNEL_ID=`echo $USERS | jq -r ".$INPUT_DEVELOPER.slack_id"`
 STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"`
 
 
-if [$INPUT_CHANNEL != "none"]
+if [$($INPUT_CHANNEL != "none")]
 then CHANNEL_ID=`echo $CHANNELS | jq -r ".$INPUT_CHANNEL"`
 echo $CHANNEL_ID
 fi
