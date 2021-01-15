@@ -8,9 +8,6 @@ inputs:
   JOB:
     description: "the job we want to notify users about"
     required: true
-  STATUS:
-    description: "job status"
-    default: ${{ inputs.JOB.status }}
   MESSAGE:
     description: "Message to send"
     default: "Hello world!"
