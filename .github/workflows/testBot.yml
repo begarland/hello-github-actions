@@ -9,9 +9,9 @@ jobs:
       jobName: ${{ steps.step2.outputs.jobName }}
     steps:
       - id: step1
-        run: echo "::set-output name=status::${{job.status}}"
+        run: echo "::set-output name=status::${{ job.status }}"
       - id: step2
-        run: echo "::set-output name=jobName::${{job.name}}"
+        run: echo "::set-output name=jobName::${{ github.job }}"
 
   send-message:
     runs-on: ubuntu-latest
