@@ -12,7 +12,7 @@ echo $INPUT_MESSAGE
 file="/messages.json"
 
 MESSAGES=$(cat "$file")
-STATUS_MESSAGE=$($MESSAGES | jq ".job.status.$INPUT_STATUS")
+STATUS_MESSAGE=$MESSAGES | jq ".job.status.$INPUT_STATUS"
 
 TEST=`echo $STATUS_MESSAGE`
 
