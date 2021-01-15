@@ -9,7 +9,7 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-MESSAGES= $(messages.json | jq -r -c '.' )
+MESSAGES= $(echo 'messages.json' | jq -r -c '.' )
 
 echo $MESSAGES
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.'
