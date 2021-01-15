@@ -15,7 +15,7 @@ MESSAGES=$(cat "$FILE")
 STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
-TEXT='"text": ' $STATUS_MESSAGE
+TEXT="'"'text'"': $STATUS_MESSAGE" 
 
 echo $TEXT
 
