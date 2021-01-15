@@ -2,14 +2,6 @@ name: Billy sends channel and developer notifications
 on: pull_request
 
 jobs:
- get-dev:
-    runs-on: ubuntu-latest
-    outputs:
-      status: ${{ steps.step1.outputs.status }}
-    steps:
-      - uses: actions/checkout@v1
-      - id: step1
-        run: echo ::set-output name=status::${{ job.status }}
   send-message:
     runs-on: ubuntu-latest
     if: always()
@@ -19,7 +11,7 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           STATUS: "${{ job.status }} "
-          MESSAGE: ":party-wizard: I worked"
+          MESSAGE: ":party-wizard:"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
