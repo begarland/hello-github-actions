@@ -12,7 +12,7 @@ TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
 echo cat messages.json | jq '.' 
 
-MESSAGES= $(cat messags.json | jq '.' )
+MESSAGES= $(cat messags.json | jq -r -c '.' )
 
 echo $MESSAGES
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.'
