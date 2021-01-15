@@ -23,12 +23,13 @@ echo $INPUT_STATUS
 echo $INPUT_PR_TITLE
 echo $INPUT_PR_LINK
 
-
-
-
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
-FULL_MESSAGE="$INPUT_PR_TITLE\n$STATUS_MESSAGE\n$INPUT_MESSAGE\n View your pull request here: $INPUT_PR_LINK"
+FULL_MESSAGE="
+$INPUT_PR_TITLE\n
+$STATUS_MESSAGE\n
+$INPUT_MESSAGE\n 
+View your pull request here: $INPUT_PR_LINK"
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': '"$FULL_MESSAGE"'"
