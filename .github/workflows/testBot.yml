@@ -2,7 +2,7 @@ name: Billy sends channel and developer notifications
 on: pull_request
 
 jobs:
- status:
+ get-dev:
     runs-on: ubuntu-latest
     outputs:
       status: ${{ steps.step1.outputs.status }}
@@ -13,13 +13,12 @@ jobs:
   send-message:
     runs-on: ubuntu-latest
     if: always()
-    needs: status
     steps:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
-          STATUS: "${{ needs.status.outputs.status }} "
+          STATUS: "${{ job.status }} "
           MESSAGE: ":party-wizard:"
   # send-another-message:
   #   needs: get-dev
