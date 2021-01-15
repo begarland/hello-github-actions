@@ -15,7 +15,7 @@ USERS_FILE="/users.json"
 USERS=$(cat "$USERS_FILE")
 
 CHANNEL_ID=`echo $USERS | jq -r ".$INPUT_DEVELOPER.slack_id"`
-STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_JOB"`
+STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status."$INPUT_JOB""`
 
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`

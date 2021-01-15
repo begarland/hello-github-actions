@@ -18,9 +18,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
-          BEARER: ${{ secrets.BUILDBOT_BEARER}}
-          JOB: ${{needs.job1.outputs.job.status}}
-          MESSAGE: ":party-wizard: fromJson( ${{needs.job1.outputs.job}} )}}"
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          JOB: ${{needs.job1.outputs.job}}
+          MESSAGE: ":party-wizard:"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
