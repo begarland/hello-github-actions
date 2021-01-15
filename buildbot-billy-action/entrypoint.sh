@@ -9,7 +9,8 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-echo jq "$GITHUB_WORKSPACE/.slack_integration/message.json"
+echo  "$GITHUB_WORKSPACE/.slack_integration/message.json" | jq '.'
+echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.'
 
 echo $CHANNEL
 echo $TEXT
