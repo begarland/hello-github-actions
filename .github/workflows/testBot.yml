@@ -12,7 +12,6 @@ jobs:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
           STATUS: "${{ job.status }} "
           MESSAGE: ":party-wizard:"
-          CHANNEL: "treehouse"
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
