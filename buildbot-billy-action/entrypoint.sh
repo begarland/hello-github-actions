@@ -4,15 +4,19 @@ apt-get update
 apt-get install -y curl jq
 
 echo "sending slack ping..."
-echo $INPUT_MESSAGE
 
-FILE="/messages.json"
+MESSAGES_FILE="/messages.json"
+MESSAGES=$(cat "$MESSAGES_FILE")
 
-MESSAGES=$(cat "$FILE")
+USERS_FILE="/users.json"
+USERS=$(cat "$USERS_FILE")
+
+CHANNEL_ID=`echo $MESSAGES | jq ".$INPUT_DEVELOPER.slack_id"`
+
 
 STATUS_MESSAGE=`echo $MESSAGES | jq ".job.status.$INPUT_STATUS"`
 
-CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
+CHANNEL='"channel": ''"'$CHANNEL_ID'",'
 TEXT="'"'text'"': $STATUS_MESSAGE" 
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \

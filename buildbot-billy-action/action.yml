@@ -11,7 +11,7 @@ inputs:
   MESSAGE:
     description: "Message to send"
     default: "Hello world!"
-  CHANNEL:
+  DEVELOPER:
     descrption: "Who to send the message to"
     default: "U0149HC3PFV"
 
@@ -22,4 +22,4 @@ runs:
     - ${{ inputs.BEARER }}
     - ${{ inputs.STATUS }}
     - ${{ inputs.MESSAGE }}
-    - ${{ inputs.CHANNEL }}
+    - ${{ inputs.DEVELOPER }}

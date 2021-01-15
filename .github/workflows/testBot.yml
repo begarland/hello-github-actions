@@ -9,8 +9,9 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER}}
-          STATUS: "${{job.status}} "
-          MESSAGE: "${{job.status}} "
+          STATUS: "${{ job.status }} "
+          DEVELOPER: "${{ github.event.pusher.name }}"
+          MESSAGE: "${{ job.status }} "
   # send-another-message:
   #   needs: get-dev
   #   runs-on: ubuntu-latest
