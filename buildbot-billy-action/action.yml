@@ -8,6 +8,9 @@ inputs:
   STATUS:
     description: "the status of the job"
     required: true
+  JOB_NAME:
+    description: "the name of the job"
+    required: true
   MESSAGE:
     description: "Message to send"
     default: " "
@@ -30,6 +33,7 @@ runs:
   args:
     - ${{ inputs.BEARER }}
     - ${{ inputs.STATUS }}
+    - ${{ inputs.JOB_NAME }}
     - ${{ inputs.PR_TITLE }}
     - ${{ inputs.PR_LINK }}
     - ${{ inputs.MESSAGE }}
