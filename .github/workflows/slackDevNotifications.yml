@@ -2,7 +2,12 @@ name: Send channel and developer notifications
 on:
   push:
     branches:
-      - !main
+      - "*"
+      - "!main"
+  pull_request:
+    types: [opened, closed]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
 
 jobs:
   get-dev:
@@ -34,7 +39,7 @@ jobs:
           author_name: Github Build Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user]}}
+        if: ${{fromJson(needs.get-dev.outputs.users)[needs.get-dev.outputs.user].notify_via_dm}}
   send-to-channel:
     runs-on: ubuntu-latest
     steps:
@@ -42,8 +47,9 @@ jobs:
         with:
           username: "Gitbot"
           status: ${{ job.status }}
-          fields: repo,commit,message,author,took # default: repo,commit
-          author_name: Github Build Notification
+          fields: author,took # default: repo,commit
+          author_name: Github Build ${{ job.status }}
+          text:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always()
