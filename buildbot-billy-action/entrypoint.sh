@@ -18,10 +18,7 @@ CHANNEL_ID=`echo $USERS | jq -r ".$INPUT_DEVELOPER.slack_id"`
 STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"`
 
 
-if [ -n "$INPUT_CHANNEL"]; then 
-  CHANNEL_ID=`echo $CHANNELS | jq -r ".$INPUT_CHANNEL"`
-  echo $CHANNEL_ID
-fi
+[[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq -r ".$INPUT_CHANNEL"`|| CHANNEL_ID=`echo $USERS | jq -r ".$INPUT_DEVELOPER.slack_id"`
 
 FULL_MESSAGE=$STATUS_MESSAGE\n$INPUT_MESSAGE
 
