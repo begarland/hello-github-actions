@@ -21,11 +21,10 @@ STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"`
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
 FULL_MESSAGE="${STATUS_MESSAGE}\n${INPUT_MESSAGE}"
-
-echo $FULL_MESSAGE
+JSON_MESSAGE="$FULL_MESSAGE"
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
-TEXT="'"'text'"': $FULL_MESSAGE" 
+TEXT="'"'text'"': $JSON_MESSAGE" 
 
 
  
