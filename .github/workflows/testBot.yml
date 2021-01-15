@@ -19,7 +19,7 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          JOB: ${{fromJson(needs.job1.outputs.job)}}
+          JOB: ${{needs.job1.outputs.job}}
           MESSAGE: ":party-wizard:"
   # send-another-message:
   #   needs: get-dev
