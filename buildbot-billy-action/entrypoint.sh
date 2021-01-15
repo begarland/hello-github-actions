@@ -6,8 +6,7 @@ apt-get install -y curl jq
 echo "sending slack ping..."
 echo $INPUT_MESSAGE
 
-CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
-TEXT='"text": ''"'$INPUT_MESSAGE'"'
+
 
 
 file="/messages.json"
@@ -17,7 +16,9 @@ STATUS_MESSAGE=$($MESSAGES | jq ".job.status.$INPUT_STATUS")
 
 echo $STATUS_MESSAGE
 
-echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.fruit'
+
+CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
+TEXT='"text": ''"'"Your job "$STATUS_MESSAGE'"'
 
 echo $CHANNEL
 echo $TEXT
