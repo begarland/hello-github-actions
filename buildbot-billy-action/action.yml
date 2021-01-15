@@ -10,7 +10,7 @@ inputs:
     required: true
   MESSAGE:
     description: "Message to send"
-    default: "Hello world!"
+    default: " "
   PR_TITLE:
     description: "PR details"
     default: ${{ github.event.pull_request.title }}
