@@ -5,8 +5,8 @@ inputs:
   BEARER:
     description: "A token for slack OAuth"
     required: true
-  JOB:
-    description: "the job we want to notify users about"
+  STATUS:
+    description: "the status of the job"
     required: true
   MESSAGE:
     description: "Message to send"
@@ -23,7 +23,7 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.BEARER }}
-    - ${{ inputs.JOB }}
+    - ${{ inputs.STATUS }}
     - ${{ inputs.MESSAGE }}
     - ${{ inputs.DEVELOPER }}
     - ${{ inputs.CHANNEL }}
