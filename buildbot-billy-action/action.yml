@@ -12,11 +12,11 @@ inputs:
     description: "Message to send"
     default: "Hello world!"
   DEVELOPER:
-    descrption: "developer that pushed the commit"
+    description: "developer that pushed the commit"
     default: ${{  github.event.pusher.name }}
 
-    DEVELOPER:
-    descrption: "Send the message to this channel"
+  CHANNEL:
+    description: "Send the message to this channel"
     default: "U0149HC3PFV"
 
 runs:
