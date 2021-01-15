@@ -28,7 +28,7 @@ FULL_MESSAGE=$STATUS_MESSAGE\n$INPUT_MESSAGE
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': $FULL_MESSAGE" 
 
-
+echo $CHANNEL
 echo $TEXT
 
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
