@@ -9,7 +9,7 @@ echo $INPUT_MESSAGE
 CHANNEL='"channel": ''"'$INPUT_CHANNEL'",'
 TEXT='"text": ''"'$INPUT_MESSAGE'"'
 
-echo  ./messages.json | jq --argjson '.'
+echo  cat ./messages.json | jq --argjson '.'
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.'
 
 echo $CHANNEL
