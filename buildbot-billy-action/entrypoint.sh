@@ -13,9 +13,9 @@ TEXT='"text": ''"'$INPUT_MESSAGE'"'
 file="/messages.json"
 
 MESSAGES=$(cat "$file")
-echo $MESSAGES
+STATUS_MESSAGE=$($MESSAGES | jq ".job.status.$INPUT_STATUS")
 
-echo $MESSAGES | jq ".job.status.$INPUT_STATUS"
+echo $STATUS_MESSAGE
 
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.fruit'
 
