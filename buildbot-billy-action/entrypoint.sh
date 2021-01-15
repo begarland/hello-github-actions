@@ -14,7 +14,7 @@ file="/messages.json"
 MESSAGES=$(cat "$file")
 echo $MESSAGES
 
-echo $MESSAGES | jq '.job.status'
+echo $MESSAGES | jq ".job.status.$TEXT"
 
 echo '{"fruit":{"name":"apple","color":"green","price":1.20}}' | jq '.fruit'
 
