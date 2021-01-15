@@ -4,7 +4,7 @@ description: Utilize Buildbot Billy
 inputs:
   BEARER:
     description: "A token for slack OAuth"
-    default: ${{ secrets.BUILDBOT_BEARER}}
+    required: true
   STATUS:
     description: "The job status"
     required: true

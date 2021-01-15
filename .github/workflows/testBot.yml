@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
-          # BEARER: ${{ secrets.BUILDBOT_BEARER}}
+          BEARER: ${{ secrets.BUILDBOT_BEARER}}
           STATUS: "${{ job.status }} "
           MESSAGE: "${{ job.status }} "
           CHANNEL: "treehouse"
