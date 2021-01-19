@@ -24,6 +24,8 @@ inputs:
   CHANNEL:
     description: "Send the message to this channel"
     default: null
+  HIDE_PR_DETAILS:
+    description: "Hides PR details"
 
 runs:
   using: "docker"
@@ -37,3 +39,4 @@ runs:
     - ${{ inputs.MESSAGE }}
     - ${{ inputs.DEVELOPER }}
     - ${{ inputs.CHANNEL }}
+    - ${{ inputs.HIDE_PR_DETAILS }}

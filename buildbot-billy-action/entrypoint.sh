@@ -21,12 +21,17 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
-[[ ! -z "$INPUT_MESSAGE" ]] && MSG="\n$INPUT_MESSAGE\n" || MSG="$INPUT_MESSAGE" 
+[[ ! -z "$INPUT_MESSAGE" ]] && MSG="\n$INPUT_MESSAGE" || MSG="$INPUT_MESSAGE" 
+
+[[ ! -z "$INPUT_HIDE_PR_DETAILS" ]] && PR=" " || PR="\nView your pull request here: $INPUT_PR_LINK"
+
+
 
 FULL_MESSAGE="
 $JOB $STATUS_MESSAGE
 $MSG
-View your pull request here: $INPUT_PR_LINK"
+$PR
+"
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': '"$FULL_MESSAGE"'"
