@@ -39,16 +39,17 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
+    if: always()
     outputs:
       status: ${{ steps.step1.outputs.status }}
       jobName: ${{ steps.step2.outputs.jobName }}
     steps:
-      - id: step1
-        run: echo "::set-output name=status::${{ job.status }}"
       - id: step2
         run: echo "::set-output name=jobName::${{ github.job }}"
       - uses: actions/checkout@v2
       - uses: ./fail-action
+      - id: step1
+        run: echo "::set-output name=status::${{ job.status }}"
 
   send-message-on-fail:
     runs-on: ubuntu-latest
