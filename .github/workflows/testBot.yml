@@ -50,7 +50,7 @@ jobs:
       - id: step2
         run: echo "::set-output name=jobName::${{ github.job }}"
 
-  send-message:
+  send-message-on-fail:
     runs-on: ubuntu-latest
     if: always()
     needs: fail-job
