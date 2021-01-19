@@ -2,7 +2,7 @@ name: Billy sends channel and developer notifications
 on: pull_request
 
 jobs:
-  job1:
+  saveOutput:
     runs-on: ubuntu-latest
     outputs:
       status: ${{ steps.step1.outputs.status }}
@@ -18,19 +18,19 @@ jobs:
   send-message:
     runs-on: ubuntu-latest
     if: always()
-    needs: job1
+    needs: saveOutput
     steps:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          STATUS: ${{ needs.job1.outputs.status }}
-          JOB_NAME: ${{ needs.job1.outputs.jobName }}
+          STATUS: ${{ needs.saveOutput.outputs.status }}
+          JOB_NAME: ${{ needs.saveOutput.outputs.jobName }}
 
   # send-message-no-status:
   #   runs-on: ubuntu-latest
   #   if: always()
-  #   # needs: job1
+  #   # needs: saveOutput
   #   steps:
   #     - uses: actions/checkout@v2
   #     - uses: ./buildbot-billy-action
@@ -55,14 +55,14 @@ jobs:
         if: always()
         run: echo "::set-output name=jobName::${{ github.job }}"
 
-  send-message-with-array-status:
+  send-message-with-many-status:
     runs-on: ubuntu-latest
     if: always()
-    needs: [job1, job2]
+    needs: [saveOutput, job2]
     steps:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          STATUS: "${{ needs.job1.outputs.status }} ${{ needs.job2.outputs.status }}"
+          STATUS: "${{ needs.saveOutput.outputs.status }} ${{ needs.job2.outputs.status }}"
           JOB_NAME: "run two jobs"
