@@ -24,7 +24,8 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_HIDE_PR_DETAILS" ]] && PR=" " || PR="\nView your pull request here: $INPUT_PR_LINK"
 
-PING_DEVELOPER=`echo $USERS | jq ".$INPUT_DEVELOPER.send_dm"`
+[[ ! -z "$INPUT_CHANNEL" ]] && SEND_PING=true || SEND_PING=`echo $USERS | jq ".$INPUT_DEVELOPER.send_dm"`
+
 
 FULL_MESSAGE="
 $JOB $STATUS_MESSAGE
@@ -32,10 +33,12 @@ $MSG
 $PR
 "
 
+echo $PING_DEVELOPER
+
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': '"$FULL_MESSAGE"'"
 
-if [$PING_DEVELOPER && ! -z "$INPUT_CHANNEL"]; then 
+if ["$SEND_PING"]; then
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $INPUT_BEARER" \
@@ -43,7 +46,9 @@ curl --location --request POST "https://slack.com/api/chat.postMessage" \
     $CHANNEL
     $TEXT
 }"
-echo "ping sent..."
+
 fi
+echo "ping sent..."
+
 
 
