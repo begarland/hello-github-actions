@@ -5,12 +5,12 @@ inputs:
   BEARER:
     description: "A token for slack OAuth"
     required: true
-  STATUS:
-    description: "the status of the job"
-    required: true
+
   JOB_NAME:
     description: "the name of the job"
     required: true
+  STATUS:
+    description: "the status of the job"
   MESSAGE:
     description: "Message to send"
     default: " "

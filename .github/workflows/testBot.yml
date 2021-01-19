@@ -24,12 +24,15 @@ jobs:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
           STATUS: ${{ needs.job1.outputs.status }}
           JOB_NAME: ${{ needs.job1.outputs.jobName }}
-  # send-another-message:
-  #   needs: get-dev
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./buildbot-billy-action
-  #       with:
-  #         BEARER: ${{ secrets.BUILDBOT_BEARER}}
-  #         MESSAGE: ":party-parrot:"
+
+  send-message-no-status:
+    runs-on: ubuntu-latest
+    if: always()
+    needs: job1
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          JOB_NAME: ${{ needs.job1.outputs.jobName }}
+          MESSAGE: "the job is done! :party-parrot:"
