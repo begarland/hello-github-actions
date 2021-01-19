@@ -33,7 +33,7 @@ $MSG
 $PR
 "
 
-echo $INPUT_STATUS, $INPUT_NAME
+echo $INPUT_STATUS, $INPUT_JOB_NAME
 
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
