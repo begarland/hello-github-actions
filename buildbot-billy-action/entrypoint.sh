@@ -38,7 +38,7 @@ echo $PING_DEVELOPER
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': '"$FULL_MESSAGE"'"
 
-if ["$SEND_PING"]; then
+if $SEND_PING; then
 curl --location --request POST "https://slack.com/api/chat.postMessage" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $INPUT_BEARER" \
