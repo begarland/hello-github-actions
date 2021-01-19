@@ -46,9 +46,9 @@ curl --location --request POST "https://slack.com/api/chat.postMessage" \
     $CHANNEL
     $TEXT
 }"
+echo "ping sent..."
 
 fi
-echo "ping sent..."
 
 
 
