@@ -33,6 +33,9 @@ $MSG
 $PR
 "
 
+echo $INPUT_STATUS, $INPUT_NAME
+
+
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': '"$FULL_MESSAGE"'"
 
