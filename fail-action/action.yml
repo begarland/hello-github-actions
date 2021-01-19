@@ -1,0 +1,5 @@
+name: this action will fail
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
