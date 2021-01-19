@@ -27,17 +27,18 @@ jobs:
           STATUS: ${{ needs.job1.outputs.status }}
           JOB_NAME: ${{ needs.job1.outputs.jobName }}
 
-  # send-message-no-status:
-  #   runs-on: ubuntu-latest
-  #   if: always()
-  #   # needs: job1
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./buildbot-billy-action
-  #       with:
-  #         BEARER: ${{ secrets.BUILDBOT_BEARER }}
-  #         MESSAGE: "the job is done! :party-parrot:"
-  #         HIDE_PR_DETAILS: true
+  send-message-no-status:
+    runs-on: ubuntu-latest
+    if: always()
+    # needs: job1
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          MESSAGE: "the job is done! :party-parrot:, this is on the treehouse channel"
+          CHANNEL: "treehouse"
+          HIDE_PR_DETAILS: true
 
   job2:
     runs-on: ubuntu-latest
