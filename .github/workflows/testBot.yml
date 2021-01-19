@@ -65,4 +65,4 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
           STATUS: "${{ needs.job1.outputs.status }} ${{ needs.job2.outputs.status }}"
-          JOB_NAME: ${{ needs.job2.outputs.jobName }}
+          JOB_NAME: "run two jobs"

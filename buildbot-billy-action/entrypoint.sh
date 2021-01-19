@@ -16,12 +16,18 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
 
-# [[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"` || STATUS_MESSAGE=" "
+# if we are provided a status string, assume it succeeded
+[[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.success"` || STATUS_MESSAGE=" "
 
-STATUS_MESSAGE="TESTING ARRAY OF STATUSES "
+# if there are any failures, we set the status message to failed
+if [[ $INPUT_STATUS =~ "failure" ]]; then
+   STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.failure"`
+fi
 
-echo $INPUT_STATUS
-
+# if there are any cancelled, we set the status message to cancelled
+if [[ $INPUT_STATUS =~ "cancelled" ]]; then
+   STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.cancelled"`
+fi
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
