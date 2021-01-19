@@ -43,9 +43,8 @@ jobs:
       status: ${{ steps.step1.outputs.status }}
       jobName: ${{ steps.step2.outputs.jobName }}
     steps:
-      - id: step0
-        uses: actions/checkout@v2
-        uses: ./fail-action
+      - uses: actions/checkout@v2
+      - uses: ./fail-action
       - id: step1
         run: echo "::set-output name=status::${{ job.status }}"
       - id: step2
