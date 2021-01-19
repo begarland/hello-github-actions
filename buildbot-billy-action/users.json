@@ -1,6 +1,6 @@
 {
   "begarland": {
     "slack_id": "U0149HC3PFV",
-    "send_dm": false
+    "send_dm": true
   }
 }
