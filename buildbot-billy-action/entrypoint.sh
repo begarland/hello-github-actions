@@ -16,7 +16,9 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
 
-[[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"` || STATUS_MESSAGE=" "
+# [[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"` || STATUS_MESSAGE=" "
+
+STATUS_MESSAGE="TESTING ARRAY OF STATUSES "
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
@@ -26,14 +28,11 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_CHANNEL" ]] && SEND_PING=true || SEND_PING=`echo $USERS | jq ".$INPUT_DEVELOPER.send_dm"`
 
-
 FULL_MESSAGE="
 $JOB $STATUS_MESSAGE
 $MSG
 $PR
 "
-
-echo $PING_DEVELOPER
 
 CHANNEL="'"'channel'"': $CHANNEL_ID," 
 TEXT="'"'text'"': '"$FULL_MESSAGE"'"
