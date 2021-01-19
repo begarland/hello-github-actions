@@ -14,14 +14,17 @@ MESSAGES=$(cat "$MESSAGES_FILE")
 USERS_FILE="/users.json"
 USERS=$(cat "$USERS_FILE")
 
+
+[[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
+
 [[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$INPUT_STATUS"` || STATUS_MESSAGE=" "
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
-[[ ! -z "$INPUT_MESSAGE" ]] && MSG="$INPUT_MESSAGE\n" || MSG="$INPUT_MESSAGE" 
+[[ ! -z "$INPUT_MESSAGE" ]] && MSG="\n$INPUT_MESSAGE\n" || MSG="$INPUT_MESSAGE" 
 
 FULL_MESSAGE="
-$INPUT_JOB_NAME $STATUS_MESSAGE\n
+$INPUT_JOB_NAME $STATUS_MESSAGE
 $MSG
 View your pull request here: $INPUT_PR_LINK"
 

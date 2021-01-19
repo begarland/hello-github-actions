@@ -34,5 +34,4 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          JOB_NAME: ${{ needs.job1.outputs.jobName }}
           MESSAGE: "the job is done! :party-parrot:"
