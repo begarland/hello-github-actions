@@ -64,7 +64,5 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          STATUS:
-            - ${{ needs.job1.outputs.status }}
-            - ${{ needs.job2.outputs.status }}
+          STATUS: "${{ needs.job1.outputs.status }} ${{ needs.job2.outputs.status }}"
           JOB_NAME: ${{ needs.job2.outputs.jobName }}
