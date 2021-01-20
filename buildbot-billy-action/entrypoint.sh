@@ -37,11 +37,12 @@ do
     fi
 done
 
-if $HAS_SUCCEEDED; then 
-    OVERALL_STATUS= "success"
-fi
+STATUS_MESSAGE=" "
 
-[[ "$HAS_SUCCEEDED" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"` || STATUS_MESSAGE= " "
+if $HAS_SUCCEEDED; then 
+    OVERALL_STATUS="success"
+    STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"`
+fi
 
 # if we are provided a status string, assume it succeeded
 # [[ ! -z "$INPUT_STATUS" ]] &&  || STATUS_MESSAGE=" "
