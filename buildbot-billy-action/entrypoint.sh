@@ -41,10 +41,10 @@ if $HAS_SUCCEEDED; then
     OVERALL_STATUS= "success"
 fi
 
-[[ "$HAS_SUCCEEDED" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"` || STATUS_MESSAGE = " "
+[[ "$HAS_SUCCEEDED" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"` || STATUS_MESSAGE= " "
 
 # if we are provided a status string, assume it succeeded
-[[ ! -z "$INPUT_STATUS" ]] &&  || STATUS_MESSAGE=" "
+# [[ ! -z "$INPUT_STATUS" ]] &&  || STATUS_MESSAGE=" "
 
 # # if there are any failures, we set the status message to failed
 # if [[ $INPUT_STATUS =~ "failure" ]]; then
