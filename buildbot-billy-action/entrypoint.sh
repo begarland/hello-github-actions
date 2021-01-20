@@ -22,9 +22,12 @@ USERS=$(cat "$USERS_FILE")
 HAS_SUCCEEDED=true
 OVERALL_STATUS=" "
 
+echo $STATUSES
+
+
 for STATUS in $STATUSES
 do 
-    echo "in the do loop"
+    echo "in the do loop" $STATUS
 
     if [[ "$STATUS" != "success" ]]; then 
         HAS_SUCCEEDED=false
