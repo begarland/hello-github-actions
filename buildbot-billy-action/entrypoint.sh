@@ -21,7 +21,7 @@ STATUSES=( $INPUT_STATUS )
 
 for STATUS in $STATUSES
 do 
-    echo $STATUS
+    echo "status is $STATUS $INPUT_STATUS"
 done
 
 # if we are provided a status string, assume it succeeded
