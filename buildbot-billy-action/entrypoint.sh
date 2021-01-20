@@ -24,7 +24,7 @@ OVERALL_STATUS= " "
 
 for STATUS in $STATUSES
 do 
-    if [$STATUS != "success"]; then 
+    if [[$STATUS != "success"]]; then 
         HAS_SUCCEEDED= false
 
         if [[ $STATUS =~ "failure" ]]; then
