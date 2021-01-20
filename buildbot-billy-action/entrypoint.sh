@@ -41,8 +41,11 @@ STATUS_MESSAGE=" "
 
 [[ ! -z "$INPUT_STATUS" ]] && SHOW_STATUS=true || SHOW_STATUS=false
 
-if [[ $HAS_SUCCEEDED && $SHOW_STATUS ]]; then 
+if $HAS_SUCCEEDED; then 
     OVERALL_STATUS="success"
+fi
+
+if $SHOW_STATUS; then 
     STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"`
 fi
 
