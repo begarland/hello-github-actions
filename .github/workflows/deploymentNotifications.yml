@@ -17,4 +17,5 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
           MESSAGE: "the job is done! ${GITHUB_REF#refs/*/}"
+          CHANNEL: "treehouse"
           HIDE_PR_DETAILS: true
