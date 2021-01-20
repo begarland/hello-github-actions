@@ -25,7 +25,7 @@ OVERALL_STATUS=" "
 echo $STATUSES
 echo $INPUT_STATUS
 
-for STATUS in $STATUSES
+for STATUS in "${STATUSES[@]}"
 do 
     echo "in the do loop" $STATUS
 
