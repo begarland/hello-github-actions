@@ -29,6 +29,7 @@ do
 
         if [[ "$STATUS" =~ "failure" ]]; then
             OVERALL_STATUS="failure"
+            echo "we have a failure"
         fi
         
         if [[ "$STATUS" =~ "cancelled" ]]; then
