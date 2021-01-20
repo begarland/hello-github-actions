@@ -27,42 +27,42 @@ jobs:
           STATUS: ${{ needs.saveOutput.outputs.status }}
           JOB_NAME: ${{ needs.saveOutput.outputs.jobName }}
 
-  # send-message-no-status:
-  #   runs-on: ubuntu-latest
-  #   if: always()
-  #   # needs: saveOutput
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./buildbot-billy-action
-  #       with:
-  #         BEARER: ${{ secrets.BUILDBOT_BEARER }}
-  #         MESSAGE: "the job is done! :party-parrot:, this is on the treehouse channel"
-  #         CHANNEL: "treehouse"
-  #         HIDE_PR_DETAILS: true
+  send-message-no-status:
+    runs-on: ubuntu-latest
+    if: always()
+    # needs: saveOutput
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          MESSAGE: "the job is done! :party-parrot:, this is on the treehouse channel"
+          CHANNEL: "treehouse"
+          HIDE_PR_DETAILS: true
 
-  # job2:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     status: ${{ steps.step1.outputs.status }}
-  #     jobName: ${{ steps.step2.outputs.jobName }}
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./fail-action
-  #     - id: step1
-  #       if: always()
-  #       run: echo "::set-output name=status::${{ job.status }}"
-  #     - id: step2
-  #       if: always()
-  #       run: echo "::set-output name=jobName::${{ github.job }}"
+  job2:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.step1.outputs.status }}
+      jobName: ${{ steps.step2.outputs.jobName }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./fail-action
+      - id: step1
+        if: always()
+        run: echo "::set-output name=status::${{ job.status }}"
+      - id: step2
+        if: always()
+        run: echo "::set-output name=jobName::${{ github.job }}"
 
-  # send-message-with-many-status:
-  #   runs-on: ubuntu-latest
-  #   if: always()
-  #   needs: [saveOutput, job2]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./buildbot-billy-action
-  #       with:
-  #         BEARER: ${{ secrets.BUILDBOT_BEARER }}
-  #         STATUS: "${{ needs.saveOutput.outputs.status }} ${{ needs.job2.outputs.status }}"
-  #         JOB_NAME: "run two jobs"
+  send-message-with-many-status:
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [saveOutput, job2]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          STATUS: "${{ needs.saveOutput.outputs.status }} ${{ needs.job2.outputs.status }}"
+          JOB_NAME: "run two jobs"
