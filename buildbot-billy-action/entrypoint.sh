@@ -16,7 +16,7 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
 
-[[ ! -z "$INPUT_STATUS" ]] && STATUSES=( $INPUT_STATUS ) || STATUSES=""
+[[ ! -z "$INPUT_STATUS" ]] && STATUSES=( $INPUT_STATUS ) || STATUSES=false
 
 
 HAS_SUCCEEDED=true
@@ -39,7 +39,7 @@ done
 
 STATUS_MESSAGE=" "
 
-if $HAS_SUCCEEDED; then 
+if $HAS_SUCCEEDED && $STATUSES; then 
     OVERALL_STATUS="success"
     STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"`
 fi
