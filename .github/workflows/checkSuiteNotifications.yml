@@ -1,6 +1,7 @@
 name: slack check suite notifications
 description: Sends slack ping on check suite actions
-on: check_run:
+on:
+  check_run:
     types: [completed]
 
 jobs:
