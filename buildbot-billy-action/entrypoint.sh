@@ -23,7 +23,7 @@ HAS_SUCCEEDED=true
 OVERALL_STATUS=" "
 
 echo $STATUSES
-
+echo $INPUT_STATUS
 
 for STATUS in $STATUSES
 do 

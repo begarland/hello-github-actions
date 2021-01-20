@@ -36,7 +36,7 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          MESSAGE: "the job is done! :party-parrot:, this is on the treehouse channel"
+          MESSAGE: "the job is done!  ${GITHUB_REF#refs/*/}"
           CHANNEL: "treehouse"
           HIDE_PR_DETAILS: true
 
