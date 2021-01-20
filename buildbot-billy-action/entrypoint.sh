@@ -56,13 +56,13 @@ if $SHOW_STATUS; then
     STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"`
 fi
 
-[[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
+[[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slackId"`
 
 [[ ! -z "$INPUT_MESSAGE" ]] && MSG="\n$INPUT_MESSAGE" || MSG="$INPUT_MESSAGE" 
 
 [[ ! -z "$INPUT_HIDE_PR_DETAILS" ]] && PR=" " || PR="\nView your pull request here: $INPUT_PR_LINK"
 
-[[ ! -z "$INPUT_CHANNEL" ]] && SEND_PING=true || SEND_PING=`echo $USERS | jq ".$INPUT_DEVELOPER.send_dm"`
+[[ ! -z "$INPUT_CHANNEL" ]] && SEND_PING=true || SEND_PING=`echo $USERS | jq ".$INPUT_DEVELOPER.sendDm"`
 
 FULL_MESSAGE="
 $JOB $STATUS_MESSAGE
