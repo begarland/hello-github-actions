@@ -56,19 +56,6 @@ if $SHOW_STATUS; then
     STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"`
 fi
 
-# if we are provided a status string, assume it succeeded
-# [[ ! -z "$INPUT_STATUS" ]] &&  || STATUS_MESSAGE=" "
-
-# # if there are any failures, we set the status message to failed
-# if [[ $INPUT_STATUS =~ "failure" ]]; then
-#    STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.failure"`
-# fi
-
-# # if there are any cancelled, we set the status message to cancelled
-# if [[ $INPUT_STATUS =~ "cancelled" ]]; then
-#    STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.cancelled"`
-# fi
-
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
 [[ ! -z "$INPUT_MESSAGE" ]] && MSG="\n$INPUT_MESSAGE" || MSG="$INPUT_MESSAGE" 
