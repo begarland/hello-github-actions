@@ -24,14 +24,14 @@ OVERALL_STATUS=" "
 
 for STATUS in $STATUSES
 do 
-    if [[ "$STATUS" != "success"]] then 
+    if [ "$STATUS" != "success" ]; then 
         HAS_SUCCEEDED= false
 
-        if [[ "$STATUS" =~ "failure" ]] then
+        if [ "$STATUS" =~ "failure" ]; then
             OVERALL_STATUS="failure"
         fi
         
-        if [[ "$STATUS" =~ "cancelled" ]] then
+        if [ "$STATUS" =~ "cancelled" ]; then
             OVERALL_STATUS="cancelled"
         fi
     fi
