@@ -12,4 +12,4 @@ jobs:
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
           MESSAGE: ${{ fromJson(github.event.check_suite.output) }}
-          JOB_NAME: "Testing action 2"
+          JOB_NAME: "Testing action on check suite"
