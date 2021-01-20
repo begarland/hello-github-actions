@@ -16,7 +16,7 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
 
-[[ ! -z "$INPUT_STATUS" ]] && STATUSES=( $INPUT_STATUS ) || STATUSES=false
+[[ ! -z "$INPUT_STATUS" ]] && STATUSES=( $INPUT_STATUS ) || STATUSES=" "
 
 
 HAS_SUCCEEDED=true
@@ -24,8 +24,11 @@ OVERALL_STATUS=" "
 
 for STATUS in $STATUSES
 do 
+    echo "in the do loop"
+
     if [[ "$STATUS" != "success" ]]; then 
         HAS_SUCCEEDED=false
+        echo "status is not success $STATUS"
 
         if [[ "$STATUS" =~ "failure" ]]; then
             OVERALL_STATUS="failure"
