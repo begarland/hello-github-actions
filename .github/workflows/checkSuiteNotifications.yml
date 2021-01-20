@@ -1,8 +1,8 @@
 name: slack check suite notifications
 description: Sends slack ping on check suite actions
 on:
-  check_run:
-    types: [completed]
+  watch:
+    types: [check_run, check_suite]
 
 jobs:
   send-notification-on-completion:
@@ -13,5 +13,5 @@ jobs:
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          MESSAGE: ${{ fromJson(github.event.check_run.conclusion) }}
+          MESSAGE: "hello world"
           JOB_NAME: "Testing action on check run"
