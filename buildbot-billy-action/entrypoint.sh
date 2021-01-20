@@ -16,26 +16,45 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
 
+[[ ! -z "$INPUT_STATUS" ]] && STATUSES=( $INPUT_STATUS ) || STATUSES=""
 
-STATUSES=( $INPUT_STATUS ) 
+
+HAS_SUCCEEDED= true
+OVERALL_STATUS= " "
 
 for STATUS in $STATUSES
 do 
-    echo "status is $STATUS $INPUT_STATUS"
+    if [$STATUS != "success"]; then 
+        HAS_SUCCEEDED= false
+
+        if [[ $STATUS =~ "failure" ]]; then
+            OVERALL_STATUS="failure"
+        fi
+        
+        if [[ $STATUS =~ "cancelled" ]]; then
+            OVERALL_STATUS="cancelled"
+        fi
+    fi
 done
 
+if $HAS_SUCCEEDED; then 
+    OVERALL_STATUS= "success"
+fi
+
+[[ "$HAS_SUCCEEDED" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"` || STATUS_MESSAGE = " "
+
 # if we are provided a status string, assume it succeeded
-[[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.success"` || STATUS_MESSAGE=" "
+[[ ! -z "$INPUT_STATUS" ]] &&  || STATUS_MESSAGE=" "
 
-# if there are any failures, we set the status message to failed
-if [[ $INPUT_STATUS =~ "failure" ]]; then
-   STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.failure"`
-fi
+# # if there are any failures, we set the status message to failed
+# if [[ $INPUT_STATUS =~ "failure" ]]; then
+#    STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.failure"`
+# fi
 
-# if there are any cancelled, we set the status message to cancelled
-if [[ $INPUT_STATUS =~ "cancelled" ]]; then
-   STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.cancelled"`
-fi
+# # if there are any cancelled, we set the status message to cancelled
+# if [[ $INPUT_STATUS =~ "cancelled" ]]; then
+#    STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.cancelled"`
+# fi
 
 [[ ! -z "$INPUT_CHANNEL" ]] && CHANNEL_ID=`echo $CHANNELS | jq ".$INPUT_CHANNEL"` || CHANNEL_ID=`echo $USERS | jq ".$INPUT_DEVELOPER.slack_id"`
 
