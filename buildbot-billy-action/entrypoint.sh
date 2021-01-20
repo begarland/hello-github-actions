@@ -16,6 +16,14 @@ USERS=$(cat "$USERS_FILE")
 
 [[ ! -z "$INPUT_JOB_NAME" ]] && JOB="$INPUT_JOB_NAME" || JOB=" "
 
+
+STATUSES=( $INPUT_STATUS ) 
+
+for STATUS in $STATUSES
+do 
+    echo $STATUS
+done
+
 # if we are provided a status string, assume it succeeded
 [[ ! -z "$INPUT_STATUS" ]] && STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.success"` || STATUS_MESSAGE=" "
 
