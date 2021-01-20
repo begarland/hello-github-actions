@@ -39,7 +39,7 @@ done
 
 STATUS_MESSAGE=" "
 
-if $HAS_SUCCEEDED && $STATUSES; then 
+if $HAS_SUCCEEDED && [[ ! -z "$INPUT_STATUS" ]]; then 
     OVERALL_STATUS="success"
     STATUS_MESSAGE=`echo $MESSAGES | jq -r ".job.status.$OVERALL_STATUS"`
 fi
