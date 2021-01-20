@@ -1,5 +1,5 @@
 name: Billy sends channel and developer notifications
-on: pull_request
+on: push
 
 jobs:
   saveOutput:
