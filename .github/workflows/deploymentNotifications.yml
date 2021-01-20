@@ -3,13 +3,13 @@ name: Send slack pings on branch merges.
 on:
   push:
     branches:
-      - master
+      - main
       - staging
 
 jobs:
   send-message-no-status:
     runs-on: ubuntu-latest
-    if: always()
+    if: always() && ${{ github.head_ref }} == 'main'
     # needs: saveOutput
     steps:
       - uses: actions/checkout@v2
