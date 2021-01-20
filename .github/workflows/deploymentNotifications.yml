@@ -1,0 +1,20 @@
+name: Send slack pings on branch merges.
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  send-message-no-status:
+    runs-on: ubuntu-latest
+    if: always() && ${{ github.head_ref }} == 'main'
+    # needs: saveOutput
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          MESSAGE: "the job is done! ${GITHUB_REF#refs/*/}"
+          HIDE_PR_DETAILS: true

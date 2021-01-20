@@ -1,0 +1,42 @@
+name: Notify development team via Slack
+description: Utilize Buildbot Billy
+
+inputs:
+  BEARER:
+    description: "A token for slack OAuth"
+    required: true
+  JOB_NAME:
+    description: "the name of the job"
+  STATUS:
+    description: "the status of the job"
+  MESSAGE:
+    description: "Message to send"
+    default: " "
+  PR_TITLE:
+    description: "PR details"
+    default: ${{ github.event.pull_request.title }}
+  PR_LINK:
+    description: "PR Link"
+    default: ${{ github.event.pull_request.html_url }}
+  DEVELOPER:
+    description: "developer that opened the pull request"
+    default: ${{ github.event.pull_request.user.login }}
+  CHANNEL:
+    description: "Send the message to this channel"
+    default: null
+  HIDE_PR_DETAILS:
+    description: "Hides PR details"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.BEARER }}
+    - ${{ inputs.STATUS }}
+    - ${{ inputs.JOB_NAME }}
+    - ${{ inputs.PR_TITLE }}
+    - ${{ inputs.PR_LINK }}
+    - ${{ inputs.MESSAGE }}
+    - ${{ inputs.DEVELOPER }}
+    - ${{ inputs.CHANNEL }}
+    - ${{ inputs.HIDE_PR_DETAILS }}
