@@ -7,15 +7,25 @@ on:
       - staging
 
 jobs:
-  send-message-no-status:
+  send-message-on-main-deploy:
     runs-on: ubuntu-latest
-    if: always() && ${{ github.head_ref }} == 'main'
-    # needs: saveOutput
+    if: ${{ always() && ${{ github.head_ref }} == 'main' }}
     steps:
       - uses: actions/checkout@v2
       - uses: ./buildbot-billy-action
         with:
           BEARER: ${{ secrets.BUILDBOT_BEARER }}
-          MESSAGE: "the job is done! ${GITHUB_REF#refs/*/}"
-          CHANNEL: "treehouse"
+          MESSAGE: "A deployment has been started to production"
+          CHANNEL: "digiteam-deployments"
+          HIDE_PR_DETAILS: true
+  send-message-on-staging-deploy:
+    runs-on: ubuntu-latest
+    if: ${{ always() && ${{ github.head_ref }} == 'staging' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./buildbot-billy-action
+        with:
+          BEARER: ${{ secrets.BUILDBOT_BEARER }}
+          MESSAGE: "A deployment has been started to staging"
+          CHANNEL: "digiteam-deployments"
           HIDE_PR_DETAILS: true
