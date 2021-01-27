@@ -1,6 +1,6 @@
 name: Send channel and developer notifications
 on:
-  workflow_dispatch
+  workflow_dispatch:
   # push:
   #   branches:
   #     - "*"

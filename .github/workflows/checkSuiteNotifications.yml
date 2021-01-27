@@ -1,8 +1,9 @@
 name: slack check suite notifications
 description: Sends slack ping on check suite actions
 on:
-  watch:
-    types: [check_run, check_suite]
+  workflow_dispatch:
+  # watch:
+  #   types: [check_run, check_suite]
 
 jobs:
   send-notification-on-completion:

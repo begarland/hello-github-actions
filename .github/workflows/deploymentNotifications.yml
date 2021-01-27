@@ -1,10 +1,11 @@
 name: Send slack pings on branch merges.
 
 on:
-  push:
-    branches:
-      - main
-      - staging
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #     - staging
 
 jobs:
   send-message-no-status:

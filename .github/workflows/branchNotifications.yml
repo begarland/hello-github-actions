@@ -1,9 +1,10 @@
 name: Send channel notifications on branch merges
 on:
-  push:
-    branches:
-      - main
-      - staging
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #     - staging
 
 jobs:
   send-alert-to-digital-channel-on-main-push:
